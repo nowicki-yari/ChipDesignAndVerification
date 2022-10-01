@@ -1,4 +1,12 @@
-module ALU(ALU_iface alu_i);
+module DUT(
+    input wire A,
+    input wire B,
+    input wire flags_in,
+    input wire operation,
+    output wire Z,
+    output wire flags_out,
+);
+endmodule
 
 /*** Test environment ***/
 module Top;
@@ -12,8 +20,13 @@ module Top;
         .clock(clock)
     );
 
-    ALU dut(
-        .alu_i(theInterface)
+    DUT ALU(
+        .A(theInterface.data_a)
+        .B(theInterface.data_b)
+        .flags_in(theInterface.flags_in)
+        .operation(theInterface.operation)
+        .Z(theInterface.data_z)
+        .flags_out(theInterface.flags_out)
     );
 
     initial begin
@@ -22,7 +35,7 @@ module Top;
         theInterface.flags_in <= 4'h0;
         theInterface.operation <= 3'h0;
         for (int i = 0; i <= 255; i++) begin
-            repeat (10) @(posedge clock);
+            @(posedge clock);
             theInterface.data_b += 8'b1;
         end
         repeat (1000) @(posedge clock);
