@@ -1,10 +1,11 @@
 module DUT(
-    input wire A,
-    input wire B,
-    input wire flags_in,
-    input wire operation,
-    output wire Z,
-    output wire flags_out,
+    input logic [7:0] A,
+    input logic [7:0] B,
+    output logic [7:0] Z,
+
+    input logic [3:0] flags_in,
+    output logic [3:0] flags_out,
+    input logic [2:0] operation,
 );
 endmodule
 
