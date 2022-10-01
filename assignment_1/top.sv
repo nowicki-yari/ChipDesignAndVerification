@@ -1,3 +1,5 @@
+module ALU(ALU_iface alu_i);
+
 /*** Test environment ***/
 module Top;
     logic clock=0;
@@ -11,7 +13,7 @@ module Top;
     );
 
     ALU dut(
-        .di(theInterface)
+        .alu_i(theInterface)
     );
 
     initial begin
@@ -24,7 +26,7 @@ module Top;
             theInterface.data_b += 8'b1;
         end
         repeat (1000) @(posedge clock);
-        $finish;
+        //$finish;
     end
 
 endmodule
