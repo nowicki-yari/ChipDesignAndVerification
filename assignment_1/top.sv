@@ -16,7 +16,7 @@ module Top;
         .flags_in(theInterface.flags_in),
         .Z(theInterface.data_z),
         .flags_out(theInterface.flags_out),
-	.operation(theInterface.operation)
+	    .operation(theInterface.operation)
     );
 
     initial begin
