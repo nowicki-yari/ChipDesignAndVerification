@@ -1,0 +1,162 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+!s11f vlog 2019.3_2 2019.09, Sep 24 2019
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ynowicki/cdandverif/ChipDesignAndVerification/hello_world
+T_opt
+!s110 1664630391
+VhoM;Z7C7LYkX<IYzlem2S2
+04 3 4 work Top fast 0
+=1-00163eb0e495-63383e76-b8021-15bfe2
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OE;O;2019.3_2;69
+Ealu
+Z2 w1664437335
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 -1
+R0
+Z5 8ALU.vhd
+Z6 FALU.vhd
+l0
+L16
+VQz:XBjGYm?CPO8F5i^?KO1
+!s100 ]`ECcUN]c29^OIXRQi1;53
+Z7 OE;C;2019.3_2;69
+32
+Z8 !s110 1664437795
+!i10b 1
+Z9 !s108 1664437795.000000
+Z10 !s90 ALU.vhd|
+Z11 !s107 ALU.vhd|
+!i113 0
+Z12 tExplicit 1 CvgOpt 0
+Abehavioural
+R3
+R4
+DEx4 work 3 alu 0 22 Qz:XBjGYm?CPO8F5i^?KO1
+!i122 -1
+l38
+L27
+VnQLKdUVh<aB`UjF9MzCEO1
+!s100 >dYVXNe@9gOJBXmh[gZDa1
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+YALU_iface
+Z13 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1664437741
+!i10b 1
+!s100 7_O0iUILQ1ISmhB]ZmIbD3
+!s11b m_8^;z2>fXmGRmQDA;e<K2
+I=CV97BD<BlI;51@e`8EgP3
+Z14 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+R2
+8ALU_i.sv
+FALU_i.sv
+!i122 -1
+L0 4
+Z15 OE;L;2019.3_2;69
+r1
+!s85 0
+31
+!s108 1664437741.000000
+!s107 top.sv|ALU_i.sv|
+!s90 -sv|ALU_i.sv|top.sv|
+!i113 0
+Z16 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+n@a@l@u_iface
+Ydemo_iface
+R13
+Z17 !s110 1664439274
+!i10b 1
+!s100 m8;R0e^mG_6m=YL3`7ajC3
+!s11b Y`g4Q1=PM_hfEFZi6Le=c2
+I3G`BX>He]l2XaGQ9l0OhB0
+R14
+S1
+R0
+Z18 w1664438960
+Z19 8top.sv
+Z20 Ftop.sv
+!i122 -1
+L0 4
+R15
+r1
+!s85 0
+31
+Z21 !s108 1664439274.000000
+Z22 !s107 top.sv|
+Z23 !s90 -reportprogress|300|-sv|top.sv|
+!i113 0
+R16
+R1
+vinverting_register
+R13
+R17
+!i10b 1
+!s100 IX>_4=`46]IZgkX9HIE[V0
+!s11b aU8;TUz7h]ATi^nFYiZ9G0
+Ij<887gUBOIi[AjeE4Ef0j3
+R14
+S1
+R0
+R18
+R19
+R20
+!i122 -1
+L0 13
+R15
+r1
+!s85 0
+31
+R21
+R22
+R23
+!i113 0
+R16
+R1
+vTop
+R13
+R17
+!i10b 1
+!s100 X7VKU_hM[2FV7bK1XFjAP0
+!s11b i6WoemNYnW0zDQ^3BfLB20
+II7AhZ@ElPFL8Pg3`U?amd3
+R14
+S1
+R0
+R18
+R19
+R20
+!i122 -1
+L0 26
+R15
+r1
+!s85 0
+31
+R21
+R22
+R23
+!i113 0
+R16
+R1
+n@top

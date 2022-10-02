@@ -1,0 +1,40 @@
+# //  Questa Sim
+# //  Version 2019.3_2 linux Sep 24 2019
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# vsim -voptargs="+acc" Top 
+# Start time: 08:55:45 on Oct 02,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.Top(fast)
+# Loading work.ALU_iface(fast)
+# Loading work.ALU(fast)
+add wave -position insertpoint  \
+sim:/Top/theInterface/clock \
+sim:/Top/theInterface/data_a \
+sim:/Top/theInterface/data_b \
+sim:/Top/theInterface/flags_in \
+sim:/Top/theInterface/data_z \
+sim:/Top/theInterface/flags_out \
+sim:/Top/theInterface/operation
+add wave -position insertpoint  \
+sim:/Top/DUT/A \
+sim:/Top/DUT/B \
+sim:/Top/DUT/Z \
+sim:/Top/DUT/flags_in \
+sim:/Top/DUT/flags_out \
+sim:/Top/DUT/operation
+run -a
+exit
+# End time: 09:00:39 on Oct 02,2022, Elapsed time: 0:04:54
+# Errors: 7, Warnings: 0

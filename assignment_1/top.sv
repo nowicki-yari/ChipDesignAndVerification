@@ -1,14 +1,3 @@
-module DUT(
-    input logic [7:0] A,
-    input logic [7:0] B,
-    output logic [7:0] Z,
-
-    input logic [3:0] flags_in,
-    output logic [3:0] flags_out,
-    input logic [2:0] operation,
-);
-endmodule
-
 /*** Test environment ***/
 module Top;
     logic clock=0;
@@ -21,25 +10,24 @@ module Top;
         .clock(clock)
     );
 
-    DUT ALU(
-        .A(theInterface.data_a)
-        .B(theInterface.data_b)
-        .flags_in(theInterface.flags_in)
-        .operation(theInterface.operation)
-        .Z(theInterface.data_z)
-        .flags_out(theInterface.flags_out)
+    ALU DUT(
+        .A(theInterface.data_a),
+        .B(theInterface.data_b),
+        .flags_in(theInterface.flags_in),
+        .Z(theInterface.data_z),
+        .flags_out(theInterface.flags_out),
+	.operation(theInterface.operation)
     );
 
     initial begin
         theInterface.data_a <= 8'h0;
         theInterface.data_b <= 8'h0;
-        theInterface.flags_in <= 4'h0;
-        theInterface.operation <= 3'h0;
+        //theInterface.flags_in <= 4'h0;
+        //theInterface.operation <= 3'h0;
         for (int i = 0; i <= 255; i++) begin
             @(posedge clock);
             theInterface.data_b += 8'b1;
         end
-        repeat (1000) @(posedge clock);
         //$finish;
     end
 

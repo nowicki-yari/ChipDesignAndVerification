@@ -1,0 +1,164 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+!s11e vcom 2019.3_2 2019.09, Sep 24 2019
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ynowicki/cdandverif/ChipDesignAndVerification/assignment_1
+T_opt
+!s110 1664700946
+VC>;@YCJb]0gEYD330ch?80
+04 3 4 work Top fast 0
+=1-00163eb0e495-63395212-81239-15d551
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OE;O;2019.3_2;69
+Ealu
+Z2 w1664443082
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 -1
+R0
+Z5 8ALU.vhd
+Z6 FALU.vhd
+l0
+L16
+VQz:XBjGYm?CPO8F5i^?KO1
+!s100 ]`ECcUN]c29^OIXRQi1;53
+Z7 OE;C;2019.3_2;69
+32
+Z8 !s110 1664634019
+!i10b 1
+Z9 !s108 1664634019.000000
+Z10 !s90 ALU.vhd|
+Z11 !s107 ALU.vhd|
+!i113 0
+Z12 tExplicit 1 CvgOpt 0
+Abehavioural
+R3
+R4
+DEx4 work 3 alu 0 22 Qz:XBjGYm?CPO8F5i^?KO1
+!i122 -1
+l38
+L27
+VnQLKdUVh<aB`UjF9MzCEO1
+!s100 >dYVXNe@9gOJBXmh[gZDa1
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+vALU
+Z13 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1664638752
+!i10b 1
+!s100 MeWTRBKJZDzh=LL2@bKkN2
+Z14 !s11b C3IUQ7X<OC>YW0S7ZRJf`2
+IDBHEO8b117G[:HRmk7_9>1
+Z15 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1664638749
+Z16 8top.sv
+Z17 Ftop.sv
+!i122 -1
+L0 1
+Z18 OE;L;2019.3_2;69
+r1
+!s85 0
+31
+!s108 1664638752.000000
+Z19 !s107 top.sv|
+Z20 !s90 -sv|top.sv|
+!i113 0
+Z21 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+n@a@l@u
+YALU_iface
+R13
+Z22 !s110 1664700910
+!i10b 1
+!s100 Yd6<[H=3J@`ZD4Id5?6>X2
+!s11b ?=SVN@g0dJfe_<_IEPnM33
+Iz2:RaUBMn=FVBI0M4E?mm3
+R15
+S1
+R0
+w1664700900
+8ALU_i.sv
+FALU_i.sv
+!i122 -1
+L0 4
+R18
+r1
+!s85 0
+31
+Z23 !s108 1664700910.000000
+Z24 !s107 ALU_i.sv|top.sv|
+Z25 !s90 -sv|top.sv|ALU_i.sv|
+!i113 0
+R21
+R1
+n@a@l@u_iface
+vDUT
+R13
+!s110 1664638490
+!i10b 1
+!s100 _Fm6PaFCdH_:EV;8IF5ld1
+R14
+In:fAC<6A@9Bk54GSE0jHK0
+R15
+S1
+R0
+w1664638489
+R16
+R17
+!i122 -1
+L0 1
+R18
+r1
+!s85 0
+31
+!s108 1664638490.000000
+R19
+R20
+!i113 0
+R21
+R1
+n@d@u@t
+vTop
+R13
+R22
+!i10b 1
+!s100 ^lIGTW?4DNDN9H8NdDgHz0
+!s11b >9IKCI88nKak68A_BJaRK1
+IQ1hTGJ[4mgP3Kk0e<R7S:2
+R15
+S1
+R0
+w1664700889
+R16
+R17
+!i122 -1
+L0 2
+R18
+r1
+!s85 0
+31
+R23
+R24
+R25
+!i113 0
+R21
+R1
+n@top

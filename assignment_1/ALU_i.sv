@@ -7,9 +7,9 @@ interface ALU_iface (
 
   logic [7:0] data_a;
   logic [7:0] data_b;
-  logic [7:0] data_z;
-
   logic [3:0] flags_in;
+  
+  logic [7:0] data_z;
   logic [3:0] flags_out;
   logic [2:0] operation;
 
