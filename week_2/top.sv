@@ -1,3 +1,6 @@
+`include "gb_iface.sv"
+`include "test.sv"
+
 /*** Test environment ***/
 module Top;
     logic clock=0;
@@ -18,16 +21,7 @@ module Top;
         .probe(gb_i.probe)
     );
 
-    initial begin
-        gb_i.reset <= 1'h1;
-        repeat(5) @(posedge clock);
-        gb_i.reset <= 1'h0;
-        repeat(10) @(posedge clock);
-        gb_i.instruction <= 8'h8c;
-        gb_i.valid <= 1'h1;
-        repeat(1) @(posedge clock);
-        gb_i.valid <= 1'h0;
-        repeat(10) @(posedge clock);
-    end
+    // SV testing 
+    test tst(gb_i);
 
 endmodule
