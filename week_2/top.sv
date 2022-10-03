@@ -25,6 +25,8 @@ module Top;
         repeat(10) @(posedge clock);
         gb_i.instruction <= 8'h8c;
         gb_i.valid <= 1'h1;
+        repeat(1) @(posedge clock);
+        gb_i.valid <= 1'h0;
         repeat(10) @(posedge clock);
     end
 
