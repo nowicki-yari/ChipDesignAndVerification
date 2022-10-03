@@ -11,6 +11,7 @@ module Top;
     );
 
     gbprocessor DUT(
+        .clock(gb_i.clock),
         .reset(gb_i.reset),
         .valid(gb_i.valid),
         .instruction(gb_i.instruction),
