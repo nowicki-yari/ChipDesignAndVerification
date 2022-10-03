@@ -1,10 +1,10 @@
 class driver;
 
   /* Virtual interface */
-  virtual gbprocessor_iface ifc;
+  virtual gb_iface ifc;
 
   /* Constructor */
-  function new(virtual gbprocessor_iface ifc);
+  function new(virtual gb_iface ifc);
     this.ifc = ifc;
   endfunction : new
 
