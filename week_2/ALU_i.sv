@@ -2,10 +2,9 @@
 `define SV_IFC_ALU
 
 interface gb_iface(
-  input logic clock;
+  input logic clock
 );
 
-  
   bit reset;
   bit valid;
 
