@@ -4,6 +4,7 @@ vlog -sv driver.sv
 vlog -sv environment.sv
 vlog -sv gb_iface.sv
 vlog -sv gbprocessor.sv 
+vlog -sv monitor.sv
 vlog -sv test.sv
 vlog -sv top.sv 
 
