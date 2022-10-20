@@ -3,45 +3,42 @@ class driver;
   /* Virtual interface */
   virtual gb_iface ifc;
 
+  mailbox #(transaction) gen2drv;
+
   /* Constructor */
-  function new(virtual gb_iface ifc);
+  function new(virtual gb_iface ifc, mailbox #(transaction) g2d);
     this.ifc = ifc;
+    this.gen2drv = g2d;
   endfunction : new
 
   /* run_addition method */
   task run_addition();
     string s;
+    transaction tra;
     
     $timeformat(-9,0," ns" , 10); /* format timing */
 
     /* print message */
-    s = $sformatf("[%t | DRV] I will start driving for addition", $time);
+     s = $sformatf("[%t | DRV] I will start driving from the mailbox", $time);
     $display(s);
     
-    /* start with reset */
-    this.ifc.reset <= 1'b1;
-    repeat(10) @(posedge this.ifc.clock);
+    forever 
+    begin
 
-    this.ifc.reset <= 1'b0;
-    repeat(10) @(posedge this.ifc.clock);
+        this.ifc.valid <= 1'b0;
+        this.gen2drv.get(tra);
 
-    /* execute instructions */
-    this.ifc.valid <= 1'b1;
-    this.ifc.instruction <= 8'h81;
-    @(posedge this.ifc.clock);
+        @(posedge this.ifc.clock);
 
-    this.ifc.valid <= 1'b1;
-    this.ifc.instruction <= 8'h82;
-    @(posedge this.ifc.clock);
+        this.ifc.valid <= 1'b1;
+        this.ifc.instruction <= 8'h82;
 
-    this.ifc.valid <= 1'b0;
-    this.ifc.instruction <= 8'h00;
-    @(posedge this.ifc.clock);
+    end /* forever */
 
-    
-    /* print message */
+
     s = $sformatf("[%t | DRV] done", $time);
     $display(s);
+    
   endtask : run_addition
 
   tast do_reset():

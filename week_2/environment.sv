@@ -1,14 +1,24 @@
+`include "transaction.sv"
+`include "generator.sv"
 `include "driver.sv"
 `include "monitor.sv"
 
 class environment;
 
+  mailbox #(transaction) gen2drv;
+
   virtual gb_iface ifc;
 
+  generator gen;
   driver drv;
   monitor mon;
 
   function new(virtual gb_iface ifc);
+    this.ifc = ifc
+
+    this.gen2drv = new(5);
+    this.gen = new(this.gen2drv);
+
     this.drv = new(ifc);
     this.mon = new(ifc);
   endfunction : new
@@ -19,15 +29,24 @@ class environment;
    * Returns :
   **/
   task run();
+    string s;
+
+    $timeformat(-9,0," ns" , 10);
+
+    s = $sformatf("[%t | ENV] I will set up the components", $time);
+    $display(s);
+
+    this.drv.do_reset();
+
     fork
-      begin
-        this.drv.run_addition();
-        this.mon.run();
-      end
+      this.drv.run_addition();
+      this.mon.run();
+      this.gen.run();
     join_any;
 
-    $display("[ENV]: end of run()");
-    
+    s = $sformatf("[%t | ENV]  end of run()", $time);
+    $display(s);
+
   endtask : run
 
 endclass : environment
