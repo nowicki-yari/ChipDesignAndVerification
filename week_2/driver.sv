@@ -2,7 +2,6 @@ class driver;
 
   /* Virtual interface */
   virtual gb_iface ifc;
-
   mailbox #(transaction) gen2drv;
 
   /* Constructor */
@@ -41,7 +40,7 @@ class driver;
 
   endtask : run_addition
 
-  tast do_reset();
+  task do_reset();
     string s;
     $timeformat(-9,0, " ns", 10);
     s = $sformatf("[%t | DRV] performing reset", $time);
