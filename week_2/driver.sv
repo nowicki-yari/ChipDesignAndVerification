@@ -38,9 +38,20 @@ class driver;
     this.ifc.instruction <= 8'h00;
     @(posedge this.ifc.clock);
 
+    
     /* print message */
     s = $sformatf("[%t | DRV] done", $time);
     $display(s);
   endtask : run_addition
+
+  tast do_reset():
+    string s;
+    $timeformat(-9,0, " ns", 10);
+    s = $sformatf("[%t | DRV] performing reset", $time);
+    this.ifc.reset = 1'b1;
+    repeat (10) @(posedge this.ifc.clock);
+    this.ifc.reset <= 1'b0;
+
+  endtask : do_reset
 
 endclass : driver
