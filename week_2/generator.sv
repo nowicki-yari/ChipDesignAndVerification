@@ -1,6 +1,3 @@
-`ifndef "transaction.sv"
-`define "transaction.sv"
-
 class generator;
 
   mailbox #(transaction) gen2drv;
