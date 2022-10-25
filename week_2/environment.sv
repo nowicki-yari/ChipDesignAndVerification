@@ -18,7 +18,7 @@ class environment;
     this.gen2drv = new(5);
     this.gen = new(this.gen2drv);
 
-    this.drv = new(ifc, this.gen2drv););
+    this.drv = new(ifc, this.gen2drv);
     this.mon = new(ifc);
   endfunction : new
 
