@@ -27,5 +27,3 @@ class generator;
   endtask : run
 
 endclass : generator
-
-`endif
