@@ -1,8 +1,7 @@
 `include "generator.sv"
 `include "driver.sv"
 `include "monitor.sv"
-`ifndef "transaction.sv"
-`define "transaction.sv"
+`include "transaction.sv"
 
 class environment;
 
