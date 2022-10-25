@@ -1,4 +1,4 @@
-'ifndef "transaction"
+`ifndef "transaction"
 define "transaction"
 
 class generator;
