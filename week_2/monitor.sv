@@ -12,7 +12,7 @@ class monitor;
   task run();
     string s;
     byte a, b, z;
-    bit sample = 0;
+    bit sample = 1;
     byte instruction;
     
     $timeformat(-9,0," ns" , 10); /* format timing */

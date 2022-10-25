@@ -13,4 +13,5 @@ class transaction;
   endfunction : toString
 
 endclass : transaction;
+
 `endif
