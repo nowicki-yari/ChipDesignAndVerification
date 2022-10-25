@@ -13,7 +13,7 @@ class environment;
   monitor mon;
 
   function new(virtual gb_iface ifc);
-    this.ifc = ifc
+    this.ifc = ifc;
 
     this.gen2drv = new(5);
     this.gen = new(this.gen2drv);
