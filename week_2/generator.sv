@@ -1,5 +1,4 @@
-`ifndef transaction
-`define transaction
+`include "transaction.sv"
 
 class generator;
 
