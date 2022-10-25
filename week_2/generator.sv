@@ -1,4 +1,4 @@
-`include "transaction.sv"
+import Dr::transaction;
 
 class generator;
 

@@ -1,3 +1,5 @@
+package Dr;
+
 `include "transaction.sv"
 
 class driver;
@@ -52,3 +54,5 @@ class driver;
   endtask : do_reset
 
 endclass : driver
+
+endpackage : Dr
