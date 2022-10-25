@@ -1,5 +1,5 @@
-`ifndef "transaction"
-define "transaction"
+`ifndef transaction
+`define transaction
 
 class generator;
 
