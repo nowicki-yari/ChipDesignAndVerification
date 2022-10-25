@@ -1,4 +1,5 @@
-import Dr::transaction;
+`ifndef "transaction.sv"
+`define "transaction.sv"
 
 class generator;
 
@@ -27,3 +28,5 @@ class generator;
   endtask : run
 
 endclass : generator
+
+`endif
