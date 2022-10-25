@@ -1,5 +1,3 @@
-`include "transaction.sv"
-
 class driver;
 
   /* Virtual interface */
