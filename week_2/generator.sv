@@ -1,5 +1,3 @@
-`include "transaction.sv"
-
 class generator;
 
   mailbox #(transaction) gen2drv;
