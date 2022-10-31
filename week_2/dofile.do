@@ -1,5 +1,8 @@
 vcom ALU.vhd
 
+vlog -sv gameboyprocessor.sv
+vlog -sv checkers.sv
+
 vlog -sv driver.sv
 vlog -sv environment.sv
 vlog -sv gb_iface.sv
