@@ -14,7 +14,7 @@ class checkers;
     shortint result;
 
     /* constructor */
-    function new(mailbox #(byte) g2c, mailbox #(short int) m2c, mailbox #(bit) c2s);
+    function new(mailbox #(byte) g2c, mailbox #(shortint) m2c, mailbox #(bit) c2s);
         this.gen2chk = g2c;
         this.mon2chk = m2c;
         this.chk2scr = c2s;
