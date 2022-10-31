@@ -1,6 +1,7 @@
 `include "generator.sv"
 `include "driver.sv"
 `include "monitor.sv"
+`include "checkers.sv"
 
 class environment;
 
