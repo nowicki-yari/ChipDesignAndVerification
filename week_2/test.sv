@@ -1,6 +1,5 @@
 `include "gb_iface.sv"
 `include "environment.sv"
-`include "generator.sv"
 
 program test (gb_iface ifc);
 
