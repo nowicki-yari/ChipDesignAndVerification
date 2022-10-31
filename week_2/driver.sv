@@ -27,9 +27,9 @@ class driver;
     begin
 
         this.ifc.valid <= 1'b0;
-        this.gen2drv.try_get(tra);
+        this.gen2drv.get(tra);
 
-        @(posedge this.ifc.clock);
+        @(negedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
         //this.ifc.instruction <= 8'h82;
