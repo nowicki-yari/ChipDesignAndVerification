@@ -7,7 +7,7 @@ class monitor;
   mailbox #(shortint) mon2chk; /* 16 bit */
 
   /* Constructor */
-  function new(virtual gb_iface ifc, mailbox #(shortint) m2c;);
+  function new(virtual gb_iface ifc, mailbox #(shortint) m2c);
     this.ifc = ifc;
     this.mon2chk = m2c;
   endfunction : new
