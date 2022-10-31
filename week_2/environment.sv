@@ -5,6 +5,7 @@
 class environment;
 
   mailbox #(transaction) gen2drv;
+  mailbox #(shortint) mon2chk;
 
   virtual gb_iface ifc;
 
@@ -16,10 +17,12 @@ class environment;
     this.ifc = ifc;
 
     this.gen2drv = new(5);
+    this.mon2chk = new(5);
+    
     this.gen = new(this.gen2drv);
 
     this.drv = new(ifc, this.gen2drv);
-    this.mon = new(ifc);
+    this.mon = new(ifc, this.mon2chk);
   endfunction : new
 
 
