@@ -46,7 +46,7 @@ class gameboyprocessor;
       
         /******** content should go here ********/
         if (instr == 8'h8C) {
-            this.A += this.H;
+            this.A = this.A + this.H;
         }
         return {this.A, this.F};
     endfunction : executeALUInstruction
