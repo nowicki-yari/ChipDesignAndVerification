@@ -51,6 +51,7 @@ class environment;
       this.drv.run_addition();
       this.mon.run();
       this.gen.run();
+      this.check.check();
     join_any;
 
     s = $sformatf("[%t | ENV]  end of run()", $time);

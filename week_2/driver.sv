@@ -25,14 +25,15 @@ class driver;
     
     forever 
     begin
-
+        
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
 
         @(posedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
-        this.ifc.instruction <= 8'h82;
+        //this.ifc.instruction <= 8'h82;
+        this.ifc.instruction <= tra.toByte();
 
     end /* forever */
 
