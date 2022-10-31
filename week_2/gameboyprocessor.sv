@@ -45,9 +45,10 @@ class gameboyprocessor;
     function shortint executeALUInstruction(byte instr);
       
         /******** content should go here ********/
-        if (instr == 8'h8C) {
+        if (instr == 8'h8C)
+        begin
             this.A = this.A + this.H;
-        }
+        end
         return {this.A, this.F};
     endfunction : executeALUInstruction
 
