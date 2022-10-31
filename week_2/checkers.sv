@@ -21,7 +21,8 @@ class checkers;
     endfunction : new
 
     task check();
-        forever begin
+        forever 
+        begin
             this.mon2chk.get(result);
             this.gen2chk.get(instr);
 

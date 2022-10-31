@@ -58,7 +58,7 @@ endclass : gameboyprocessor
 /* A small program to test the model */
 program test_cpumodel;
     static gameboyprocessor gbmodel;
-
+    shortint r;
     initial 
     begin
         /* instantiate model */
@@ -69,22 +69,22 @@ program test_cpumodel;
 
         /* ADC H => A = A + H + Cin => 0 + 5 + 0 = 5 = 0x5*/ 
         $display("Executing instruction 0x8C");
-        gbmodel.executeALUInstruction(8'h8C);
+        r = gbmodel.executeALUInstruction(8'h8C);
 
         /* show the final values of the register file*/
         gbmodel.toString();
 
 
         $display("Executing instruction 0x8C");
-        gbmodel.executeALUInstruction(8'h8C);
+        r = gbmodel.executeALUInstruction(8'h8C);
         gbmodel.toString();
 
         $display("Executing instruction 0x8C");
-        gbmodel.executeALUInstruction(8'h8C);
+        r = gbmodel.executeALUInstruction(8'h8C);
         gbmodel.toString();
 
         $display("Executing instruction 0x8C");
-        gbmodel.executeALUInstruction(8'h8C);
+        r = gbmodel.executeALUInstruction(8'h8C);
         gbmodel.toString();
 
     end

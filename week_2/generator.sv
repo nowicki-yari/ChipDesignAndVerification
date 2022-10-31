@@ -22,7 +22,7 @@ class generator;
     
     for(int i=0; i<100; i++)
     begin
-      tra = new();
+      tra = new(); 
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
       this.gen2drv.put(tra);
