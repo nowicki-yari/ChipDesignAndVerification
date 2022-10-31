@@ -3,16 +3,20 @@ class monitor;
   /* Virtual interface */
   virtual gb_iface ifc;
 
+  /* Mailbox */
+  mailbox #(shortint) mon2chk; /* 16 bit */
+
   /* Constructor */
-  function new(virtual gb_iface ifc);
+  function new(virtual gb_iface ifc, mailbox #(shortint) m2c;);
     this.ifc = ifc;
+    this.mon2chk = m2c;
   endfunction : new
 
   /* run method */
   task run();
     string s;
     byte a, b, z;
-    bit sample = 1;
+    bit sample = 0;
     byte instruction;
     
     $timeformat(-9,0," ns" , 10); /* format timing */
@@ -29,6 +33,7 @@ class monitor;
       if(sample == 1)
       begin
         s = $sformatf("[%t | MON] I sampled %x (with %x)", $time, this.ifc.probe, instruction);
+        this.mon2chk.put(this.ifc.probe);
         $display(s);
 
         sample = 0;

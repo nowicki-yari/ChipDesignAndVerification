@@ -12,6 +12,10 @@ class transaction;
     return $sformatf("Instruction: %08x", this.instruction);
   endfunction : toString
 
+  function byte toByte();
+    return this.instruction;
+  endfunction : toByte
+
 endclass : transaction;
 
 `endif
