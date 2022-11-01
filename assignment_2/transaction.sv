@@ -1,3 +1,6 @@
+`ifndef SR_TRA_TRANSACTION
+`define SR_TRA_TRANSACTION
+
 class transaction;
   byte instruction;
 
