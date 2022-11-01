@@ -21,7 +21,7 @@ class generator;
 
     //Problem: Program ends when all instructions are placed in the mailbox, but not when everything is received
     //Right now: The incorrect tests are the tests where F is not 00.
-    for(int i=0; i<100; i++)
+    for(int i=0; i<105; i++)
     begin
       tra = new();
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
@@ -29,6 +29,7 @@ class generator;
       this.gen2drv.put(tra);
       this.gen2chk.put(tra.toByte());
     end
+    wait(this.gen2)
   endtask : run
 
 endclass : generator
