@@ -38,4 +38,13 @@ class driver;
          
   endtask : run_addition
 
+  task do_reset();
+    string s;
+    $timeformat(-9,0, " ns", 10);
+    s = $sformatf("[%t | DRV] performing reset", $time);
+    this.ifc.reset <= 1'b1;
+    repeat (10) @(posedge this.ifc.clock);
+    this.ifc.reset <= 1'b0;
+  endtask : do_reset
+
 endclass : driver
