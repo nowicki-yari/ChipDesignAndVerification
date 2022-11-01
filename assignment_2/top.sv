@@ -1,7 +1,7 @@
 `include "gb_iface.sv"
 `include "test.sv"
 
-module top;
+module Top;
     logic clock=0;
 
     // clock generation - 100 MHz
