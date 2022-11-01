@@ -24,7 +24,6 @@ class driver;
         
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
-        $display(s);
 
         @(posedge this.ifc.clock);
 
