@@ -56,6 +56,7 @@ class gameboyprocessor;
             end else begin
                 this.F = 8'h0;
             end
+        end
         return {this.A, this.F};
 
     endfunction : executeALUInstruction

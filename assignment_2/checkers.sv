@@ -35,10 +35,10 @@ class checkers;
 
             if(r_ALU == result)
             begin
-                s = $sformatf("[%t | CHK] The result is correct.", $time);
+                //s = $sformatf("[%t | CHK] The result is correct.", $time);
                 this.chk2scr.put(1);
             end else begin
-                s = $sformatf("[%t | CHK] The result is NOT correct.", $time);
+                //s = $sformatf("[%t | CHK] The result is NOT correct.", $time);
                 this.chk2scr.put(0);
             end
             $display(s);
