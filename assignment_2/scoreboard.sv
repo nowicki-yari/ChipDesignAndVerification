@@ -22,6 +22,7 @@ class scoreboard;
         forever begin
             this.chk2scr.get(c2s);
             total_tests += 1;
+            $display("Received at scoreboard: %u", c2s);
             if (c2s == 1)
             begin
                 correct_tests += 1;
@@ -30,6 +31,7 @@ class scoreboard;
             end
         end
     endtask : score
+
 
     task result();
         $display("Total tests: %i", total_tests);
