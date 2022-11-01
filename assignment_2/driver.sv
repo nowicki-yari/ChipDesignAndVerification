@@ -19,6 +19,20 @@ class driver;
     s = $sformatf("[%t | DRV] I will start driving from the mailbox", $time);
     $display(s);
     
+    /* execute instructions */
+    this.ifc.valid <= 1'b1;
+    this.ifc.instruction <= 8'h81;
+    @(posedge this.ifc.clock);
+
+    this.ifc.valid <= 1'b1;
+    this.ifc.instruction <= 8'h82;
+    @(posedge this.ifc.clock);
+
+    this.ifc.valid <= 1'b0;
+    this.ifc.instruction <= 8'h00;
+    @(posedge this.ifc.clock);
+
+    /*
     forever 
     begin
 
@@ -31,7 +45,7 @@ class driver;
         this.ifc.instruction <= 8'h82;
 
     end /* forever */
-
+    
 
     s = $sformatf("[%t | DRV] done", $time);
     $display(s);
@@ -46,7 +60,6 @@ class driver;
     this.ifc.reset <= 1'b1;
     repeat (10) @(posedge this.ifc.clock);
     this.ifc.reset <= 1'b0;
-    repeat (10) @(posedge this.ifc.clock);
   endtask : do_reset
   
 
