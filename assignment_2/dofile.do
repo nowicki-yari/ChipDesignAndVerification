@@ -1,5 +1,6 @@
 vcom ALU.vhd
 
+vlog -sv scoreboard.sv
 vlog -sv gameboyprocessor.sv
 vlog -sv checkers.sv
 

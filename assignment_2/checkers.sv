@@ -24,14 +24,12 @@ class checkers;
         string s;
         $timeformat(-9,0," ns" , 10);
         gbmodel = new();
-        
+
         forever 
         begin
             this.mon2chk.get(result);
             this.gen2chk.get(instr);
-
             
-
             r_ALU = gbmodel.executeALUInstruction(instr);
            
 

@@ -3,6 +3,7 @@
 `include "driver.sv"
 `include "monitor.sv"
 `include "checkers.sv"
+`include "scoreboard.sv"
 
 class environment;
 
@@ -17,6 +18,7 @@ class environment;
   driver drv;
   monitor mon;
   checkers check;
+  scoreboard board;
 
   function new(virtual gb_iface ifc);
     this.ifc = ifc;
@@ -30,6 +32,7 @@ class environment;
     this.drv = new(ifc, this.gen2drv);
     this.mon = new(ifc, this.mon2chk);
     this.check = new(this.gen2chk, this.mon2chk, this.chk2scr);
+    this.board = new(this.chk2scr);
 
   endfunction : new
 
@@ -48,9 +51,11 @@ class environment;
       this.mon.run();
       this.gen.run();
       this.check.check();
+      this.board.score();
     join_any;
 
     s = $sformatf("[%t | ENV]  end of run()", $time);
+    this.board.result();
     $display(s);
 
   endtask : run
