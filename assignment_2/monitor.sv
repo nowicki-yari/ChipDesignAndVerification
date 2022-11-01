@@ -48,5 +48,5 @@ class monitor;
         
     end /* forever */
   endtask : run
-
+  
 endclass : monitor

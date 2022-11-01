@@ -19,7 +19,9 @@ class generator;
     s = $sformatf("[%t | GEN] I will start generating for the mailbox", $time);
     $display(s);
 
-    for(int i=0; i<105; i++)
+    //Problem: Program ends when all instructions are placed in the mailbox, but not when everything is received
+    //Right now: The incorrect tests are the tests where F is not 00.
+    for(int i=0; i<100; i++)
     begin
       tra = new();
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());

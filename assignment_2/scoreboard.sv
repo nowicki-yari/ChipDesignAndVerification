@@ -11,18 +11,18 @@ class scoreboard;
     /* constructor */
     function new(mailbox #(bit) c2s);
         this.chk2scr = c2s;
+        total_tests = 0;
+        correct_tests = 0;
+        incorrect_tests = 0;
     endfunction : new
 
     task score();
 
-        total_tests = 0;
-        correct_tests = 0;
-        incorrect_tests = 0;
+        
 
         forever begin
             this.chk2scr.get(c2s);
             total_tests += 1;
-            $display("Received at scoreboard: %u", c2s);
             if (c2s == 1)
             begin
                 correct_tests += 1;
