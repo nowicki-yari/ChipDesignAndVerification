@@ -21,6 +21,7 @@ class driver;
 
     
     forever begin
+        
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
         s = $sformatf("[%t | DRV] I will execute %s", $time, tra.toString());
@@ -30,6 +31,8 @@ class driver;
 
         this.ifc.valid <= 1'b1;
         this.ifc.instruction <= 8'h82;
+
+        @(posedge this.ifc.clock);
 
     end /* forever */
     
