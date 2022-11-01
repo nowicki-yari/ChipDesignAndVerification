@@ -1,5 +1,5 @@
 vcom ALU.vhd
-
+vlog -sv monitor.sv
 vlog -sv driver.sv
 vlog -sv environment.sv
 vlog -sv gb_iface.sv
