@@ -23,14 +23,15 @@ class checkers;
     task check();
         string s;
         $timeformat(-9,0," ns" , 10);
-
+        gbmodel = new();
+        
         forever 
         begin
             this.mon2chk.get(result);
             this.gen2chk.get(instr);
 
-            gbmodel = new();
-            gbmodel.toString(); 
+            
+
             r_ALU = gbmodel.executeALUInstruction(instr);
            
 
