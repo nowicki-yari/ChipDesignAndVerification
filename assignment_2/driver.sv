@@ -29,7 +29,7 @@ class driver;
 
         this.ifc.valid <= 1'b1;
         //s = $sformatf("[%t | DRV] Turned the valid signal to one", $time);
-        this.ifc.instruction <= 8'h82;
+        this.ifc.instruction <= tra.toByte();
 
         @(posedge this.ifc.clock);
 

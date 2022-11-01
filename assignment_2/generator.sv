@@ -19,7 +19,7 @@ class generator;
     s = $sformatf("[%t | GEN] I will start generating for the mailbox", $time);
     $display(s);
 
-    for(int i=0; i<10; i++)
+    for(int i=0; i<100; i++)
     begin
       tra = new();
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
