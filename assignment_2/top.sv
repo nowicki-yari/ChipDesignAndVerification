@@ -24,4 +24,4 @@ module Top;
     // SV testing 
     test tst(gb_i);
 
-endmodule : top
+endmodule : Top
