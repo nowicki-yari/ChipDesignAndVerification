@@ -49,7 +49,7 @@ class gameboyprocessor;
         //Returns the probe
         if (instr == 8'h8C)
         begin
-            this.A = this.A + this.H;
+            this.A <= this.A + this.H;
         end
         return {this.A, this.F};
     endfunction : executeALUInstruction
