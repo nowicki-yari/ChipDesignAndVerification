@@ -50,7 +50,12 @@ class gameboyprocessor;
         if (instr == 8'h8C)
         begin
             this.A += this.H;
-        end
+            if (this.A >= 8'h10)
+            begin
+                this.F = 8'h20;
+            end else begin
+                this.F = 8'h0;
+            end
         return {this.A, this.F};
 
     endfunction : executeALUInstruction
