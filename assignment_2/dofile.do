@@ -1,4 +1,7 @@
 vcom ALU.vhd
+
+vlog -sv generator.sv
+vlog -sv transaction.sv
 vlog -sv monitor.sv
 vlog -sv driver.sv
 vlog -sv environment.sv
