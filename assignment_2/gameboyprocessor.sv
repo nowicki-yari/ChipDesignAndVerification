@@ -49,9 +49,9 @@ class gameboyprocessor;
         //Returns the probe
         if (instr == 8'h8C)
         begin
-            this.A += this.H;
+            A += H;
         end
-        return {this.A, this.F};
+        return {A, F};
     endfunction : executeALUInstruction
 
 endclass : gameboyprocessor
