@@ -1,3 +1,5 @@
+`include "transaction.sv"
+
 class driver;
 
   virtual gb_iface ifc;
