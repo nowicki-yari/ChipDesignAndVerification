@@ -37,7 +37,7 @@ class driver;
     $display(s);
          
   endtask : run_addition
-
+  /*
   task do_reset();
     string s;
     $timeformat(-9,0, " ns", 10);
@@ -46,5 +46,6 @@ class driver;
     repeat (10) @(posedge this.ifc.clock);
     this.ifc.reset <= 1'b0;
   endtask : do_reset
+  */
 
 endclass : driver
