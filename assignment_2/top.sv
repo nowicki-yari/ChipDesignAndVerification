@@ -13,7 +13,7 @@ module Top;
     );
 
     // instantiate the DUT and connect it to the interface
-    gbprocessor dut (
+    gbprocessor DUT (
         .reset(gb_i.reset),
         .clock(clock),
         .instruction(gb_i.instruction),
