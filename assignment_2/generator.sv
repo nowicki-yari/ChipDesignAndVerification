@@ -29,7 +29,6 @@ class generator;
       this.gen2drv.put(tra);
       this.gen2chk.put(tra.toByte());
     end
-    wait(this.gen2)
   endtask : run
 
 endclass : generator
