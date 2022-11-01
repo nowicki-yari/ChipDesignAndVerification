@@ -20,13 +20,12 @@ class driver;
     $display(s);
 
     
-    forever 
-    begin
-
+    forever begin
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
         s = $sformatf("[%x | DRV] I will execute ", tra);
-
+        $display(s);
+        
         @(posedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
