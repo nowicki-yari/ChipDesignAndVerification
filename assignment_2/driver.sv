@@ -24,7 +24,6 @@ class driver;
         
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
-        s = $sformatf("[%t | DRV] I will execute %s", $time, tra.toString());
         $display(s);
 
         @(posedge this.ifc.clock);
@@ -33,7 +32,7 @@ class driver;
         //s = $sformatf("[%t | DRV] Turned the valid signal to one", $time);
         this.ifc.instruction <= 8'h82;
 
-        //@(posedge this.ifc.clock);
+        @(posedge this.ifc.clock);
 
     end /* forever */
     
