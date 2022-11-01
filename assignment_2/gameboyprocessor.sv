@@ -54,7 +54,7 @@ class gameboyprocessor;
             $display("REG D : %02X \t\t REG E : %02X", this.D, this.E);
             $display("REG H : %02X \t\t REG L : %02X", this.H, this.L);
         end
-        return {this.A, this.F}
+        return {this.A, this.F};
         
     endfunction : executeALUInstruction
 
