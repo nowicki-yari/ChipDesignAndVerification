@@ -33,9 +33,9 @@ class scoreboard;
 
 
     task result();
-        $display("Total tests: %i", total_tests);
-        $display("Correct tests: %i", correct_tests);
-        $display("Incorrect tests: %i", incorrect_tests);
+        $display("Total tests: %d", total_tests);
+        $display("Correct tests: %d", correct_tests);
+        $display("Incorrect tests: %d", incorrect_tests);
     endtask;
 
 endclass : scoreboard
