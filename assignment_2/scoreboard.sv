@@ -18,9 +18,8 @@ class scoreboard;
 
     task score();
 
-        
-
-        forever begin
+        while(total_tests<100)
+        begin
             this.chk2scr.get(c2s);
             total_tests += 1;
             if (c2s == 1)
