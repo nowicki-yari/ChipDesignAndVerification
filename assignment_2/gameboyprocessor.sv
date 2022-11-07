@@ -60,6 +60,8 @@ class gameboyprocessor;
             end else if (prev_value > 128 && this.A < 8)
             begin
                 this.F = 8'h03;
+            end else begin
+                this.F = 8'h00;
             end
         end
         return {this.A, this.F};
