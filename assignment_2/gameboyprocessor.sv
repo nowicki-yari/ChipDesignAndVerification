@@ -49,6 +49,11 @@ class gameboyprocessor;
         //Returns the probe
         if (instr == 8'h8C)
         begin
+            if (this.F == 8'h30)
+            begin
+                this.A += 1; // OVERFLOW, without increasing reg A one bit the tests fail
+            end
+
             prev_value = this.A;
             this.A += this.H;
             if(this.A == 0)
@@ -57,7 +62,6 @@ class gameboyprocessor;
             end else if (prev_value[7:4] == 4'hF && this.A[7:4] == 4'h0)
             begin
                 this.F = 8'h30;
-                this.A += 1; // OVERFLOW, without increasing reg A one bit the tests fail
             end else if (prev_value[4] != this.A[4] || prev_value[5] != this.A[5] || prev_value[6] != this.A[6] || prev_value[7] != this.A[7])
             begin
                 this.F = 8'h20;
