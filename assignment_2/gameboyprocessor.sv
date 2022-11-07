@@ -53,13 +53,13 @@ class gameboyprocessor;
             this.A += this.H;
             if(this.A == 0)
             begin
-                this.F = 8'h08;
+                this.F = 8'h40;
             end else if (prev_value > 128 && this.A < 16)
             begin
-                this.F = 8'h04;
+                this.F = 8'h30;
             end else if (prev_value[4] != this.A[4] || prev_value[5] != this.A[5] || prev_value[6] != this.A[6] || prev_value[7] != this.A[7])
             begin
-                this.F = 8'h02;
+                this.F = 8'h20;
             end else begin
                 this.F = 8'h00;
             end
