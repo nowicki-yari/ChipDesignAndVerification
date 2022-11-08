@@ -74,7 +74,7 @@ program assignment3();
       begin
         if (tra.instruction_selection == 3'h2)
         begin
-          tra.instruction_selection == 3'h5;
+          tra.instruction_selection = 3'h5;
           $display("SUB operation detected, performing XOR next.");
         end else begin
           void'(tra.randomize());
