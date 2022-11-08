@@ -34,6 +34,9 @@ program assignment3();
       tra = new();
       tra.instruction_type.rand_mode(0);
       tra.instruction_selection.rand_mode(0);
+
+      tra.instruction_type = 2'h2;
+      
       for(int i=0;i<8;i++)
       begin
         for(int j=0;j<100;j++)
