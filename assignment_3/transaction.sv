@@ -6,6 +6,10 @@ class transaction;
   rand bit [2:0] instruction_selection;
   rand bit [2:0] operand_selection;
 
+  constraint instruction_starting_with_A {
+    (instruction_selection inside {3'h0,3'h1,3'h4});
+  }
+
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
@@ -36,7 +40,7 @@ program assignment3();
       tra.instruction_selection.rand_mode(0);
 
       tra.instruction_type = 2'h2;
-      
+      tra.instruction_starting_with_A.constraint_mode(0);
       for(int i=0;i<8;i++)
       begin
         for(int j=0;j<100;j++)
@@ -52,6 +56,14 @@ program assignment3();
 
       $display("Starting test 2...");
       // Test 2: 100 tests with random operands for operations that start with an A (ADD, ADC or AND)
+      tra.instruction_starting_with_A.constraint_mode(0);
+      for(int j=0;j<100;j++)
+      begin
+        
+        void'(tra.randomize());
+
+        $display("%s", tra.toString());
+      end
       $display("Test 2: Done");
 
       $display("Starting test 3...");
