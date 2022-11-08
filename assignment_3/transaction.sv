@@ -47,7 +47,7 @@ program assignment3();
 
       $display("Starting test 2...");
       // Test 2: 100 tests with random operands for operations that start with an A (ADD, ADC or AND)
-      $display("Test 2: Done")
+      $display("Test 2: Done");
 
       $display("Starting test 3...");
       // Test 3: 100 tests with random operands and random operations. After a SUB operation, the next operation MUST be XOR
