@@ -10,6 +10,10 @@ class transaction;
     (instruction_selection inside {3'h0,3'h1,3'h4});
   }
 
+  constraint cp_twenty_percent {
+    instruction_selection dist {7 := 2, [0:6] :/ 8};
+  }
+
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
@@ -30,6 +34,8 @@ endclass : transaction;
 program assignment3();
     transaction tra;
 
+    int cp_count = 0;
+    int total = 0;
     initial
     begin
       /* COMPLETE THIS CODE */
@@ -41,6 +47,7 @@ program assignment3();
 
       tra.instruction_type = 2'h2;
       tra.instruction_starting_with_A.constraint_mode(0);
+      tra.cp_twenty_percent.constraint_mode(0);
       for(int i=0;i<8;i++)
       begin
         for(int j=0;j<100;j++)
@@ -85,6 +92,16 @@ program assignment3();
 
       $display("Starting test 4...");
       // Test 4: 1’000 tests with random operands. Roughly 20% of the tests should be the CP operation. Print a summary of these tests to show the constrained is met.
+      tra.cp_twenty_percent.constraint_mode(1);
+      for(int j=0;j<1000;j++)
+      begin
+        total += 1;
+        void'(tra.randomize());
+
+        $display("%s", tra.toString());
+      
+      end
+      $display("%d tests out of %d tests were cp instructions", cp_count, total);
       $display("Test 4: Done");
     end
 
