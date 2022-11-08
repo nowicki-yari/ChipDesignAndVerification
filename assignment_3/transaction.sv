@@ -31,13 +31,15 @@ program assignment3();
       /* COMPLETE THIS CODE */
       $display("Starting test 1...");
       // Test 1: 100 tests random operands for each operation (ADD, ADC, SUB, SBC, AND, XOR, OR, CP) specifically (totalling on 800 tests)
+      void'(tra.instruction_type.rand_mode(0));
+      void'(tra.instruction_selection.rand_mode(0));
       for(int i=0;i<8;i++)
       begin
         for(int j=0;j<100;j++)
         begin
           tra = new();
           
-          void'(tra.operand_selection.randomize());
+          void'(tra.randomize());
 
           $display("%s", tra.toString());
         end
