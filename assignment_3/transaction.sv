@@ -43,19 +43,19 @@ program assignment3();
         end
         tra.instruction_selection += 1'b1;
       end
-      $display("Test 1: Done")
+      $display("Test 1: Done");
 
-      $display("Starting test 2...")
+      $display("Starting test 2...");
       // Test 2: 100 tests with random operands for operations that start with an A (ADD, ADC or AND)
       $display("Test 2: Done")
 
-      $display("Starting test 3...")
+      $display("Starting test 3...");
       // Test 3: 100 tests with random operands and random operations. After a SUB operation, the next operation MUST be XOR
-      $display("Test 3: Done")
+      $display("Test 3: Done");
 
-      $display("Starting test 4...")
+      $display("Starting test 4...");
       // Test 4: 1’000 tests with random operands. Roughly 20% of the tests should be the CP operation. Print a summary of these tests to show the constrained is met.
-      $display("Test 4: Done")
+      $display("Test 4: Done");
     end
 
 endprogram : assignment3
