@@ -31,6 +31,7 @@ program assignment3();
       /* COMPLETE THIS CODE */
       $display("Starting test 1...");
       // Test 1: 100 tests random operands for each operation (ADD, ADC, SUB, SBC, AND, XOR, OR, CP) specifically (totalling on 800 tests)
+      tra = new();
       void'(tra.instruction_type.rand_mode(0));
       void'(tra.instruction_selection.rand_mode(0));
       for(int i=0;i<8;i++)
