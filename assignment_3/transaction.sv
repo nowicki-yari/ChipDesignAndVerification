@@ -56,7 +56,7 @@ program assignment3();
 
       $display("Starting test 2...");
       // Test 2: 100 tests with random operands for operations that start with an A (ADD, ADC or AND)
-      tra.instruction_starting_with_A.constraint_mode(0);
+      tra.instruction_starting_with_A.constraint_mode(1);
       tra.instruction_selection.rand_mode(1);
       for(int j=0;j<100;j++)
       begin
