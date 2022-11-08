@@ -39,7 +39,7 @@ program assignment3();
           
           void'(tra.operand_selection.randomize());
 
-          $display("%s", tra.ToString());
+          $display("%s", tra.toString());
         end
         tra.instruction_selection += 1'b1;
       end
