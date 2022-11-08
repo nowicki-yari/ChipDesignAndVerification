@@ -97,7 +97,8 @@ program assignment3();
       begin
         total += 1;
         void'(tra.randomize());
-
+        if (tra.instruction_selection == 3'h7)
+          cp_count += 1;
         $display("%s", tra.toString());
       
       end
