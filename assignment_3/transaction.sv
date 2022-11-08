@@ -29,7 +29,7 @@ program assignment3();
     initial
     begin
       /* COMPLETE THIS CODE */
-      $display("Starting test 1...")
+      $display("Starting test 1...");
       // Test 1: 100 tests random operands for each operation (ADD, ADC, SUB, SBC, AND, XOR, OR, CP) specifically (totalling on 800 tests)
       for(int i=0;i<8;i++)
       begin
