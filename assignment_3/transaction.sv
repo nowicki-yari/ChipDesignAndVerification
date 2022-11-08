@@ -69,6 +69,18 @@ program assignment3();
 
       $display("Starting test 3...");
       // Test 3: 100 tests with random operands and random operations. After a SUB operation, the next operation MUST be XOR
+      tra.instruction_starting_with_A.constraint_mode(0);
+      for(int j=0;j<100;j++)
+      begin
+        if (tra.instruction_selection == 3'h2)
+        begin
+          tra.instruction_selection == 3'h5;
+          $display("SUB operation detected, performing XOR next.");
+        end else begin
+          void'(tra.randomize());
+        end
+        $display("%s", tra.toString());
+      end
       $display("Test 3: Done");
 
       $display("Starting test 4...");
