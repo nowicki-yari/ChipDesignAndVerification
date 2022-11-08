@@ -38,7 +38,6 @@ program assignment3();
       begin
         for(int j=0;j<100;j++)
         begin
-          tra = new();
           
           void'(tra.randomize());
 
