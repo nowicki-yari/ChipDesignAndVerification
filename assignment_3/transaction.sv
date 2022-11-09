@@ -25,7 +25,7 @@ class transaction;
   endfunction : toString
 
   function byte toByte();
-    return byte'(this.instruction_type * 2**(6-1) + this.instruction_selection * 2**(3-1) + this.operand_selection);
+    return byte'(this.instruction_type * 2**(6) + this.instruction_selection * 2**(3) + this.operand_selection);
   endfunction : toByte;
 
 
