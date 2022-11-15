@@ -18,7 +18,7 @@ class scoreboard;
 
     task score();
 
-        while(total_tests<100)
+        while($get_coverage()<100)
         begin
             this.chk2scr.get(c2s);
             total_tests += 1;
