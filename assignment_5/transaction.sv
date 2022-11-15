@@ -18,6 +18,9 @@ class transaction;
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
     this.operand_selection = 3'h0;
+
+    this.instruction_type.rand_mode(0);
+    this.instruction_type = 2'h2;
   endfunction : new
 
   function string toString();
@@ -25,6 +28,7 @@ class transaction;
   endfunction : toString
 
   function byte toByte();
+    void'(this.randomize());
     return byte'(this.instruction_type * 2**(6) + this.instruction_selection * 2**(3) + this.operand_selection);
   endfunction : toByte;
 
