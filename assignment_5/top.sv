@@ -30,7 +30,7 @@ module Top;
     covergroup cg_XOR_100_after_SBC @(posedge clock);
         option.at_least = 100;
         
-        XOR_100_after_SBC: coverpoint gb_i.instruction[3:5] iff(gb_i.valid && !gb_i.reset){
+        XOR_100_after_SBC: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){
             bins xor_bin = {5};
             bins sbc_bin = {3};
 
@@ -43,7 +43,7 @@ module Top;
     // At least 1000 CPs are executed
     covergroup cg_CP_1000 @(posedge clock);
         option.at_least = 1000;
-        CP_1000: coverpoint gb_i.instruction[3:5] iff(gb_i.valid && !gb_i.reset){ 
+        CP_1000: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
             bins cp_bin = {7};
         }
     endgroup
@@ -51,11 +51,11 @@ module Top;
     // At least 20 SUB instructions should be done with register E
     covergroup cg_SB_20 @(posedge clock);
         
-        SB_20: coverpoint gb_i.instruction[3:5] iff(gb_i.valid && !gb_i.reset){ 
+        SB_20: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
             bins sb_bin = {2};
         }
 
-        regE: coverpoint gb_i.instruction[0:2] iff(gb_i.valid && !gb_i.reset){ 
+        regE: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
             bins regE_bin = {5};
         }
 
