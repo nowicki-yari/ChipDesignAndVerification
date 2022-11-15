@@ -55,7 +55,7 @@ module Top;
             bins sb_bin = {2};
         }
 
-        regE: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
+        regE: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
             bins regE_bin = {5};
         }
 
