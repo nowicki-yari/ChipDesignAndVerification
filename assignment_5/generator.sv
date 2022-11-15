@@ -22,9 +22,10 @@ class generator;
     //Problem: Program ends when all instructions are placed in the mailbox, but not when everything is received
     //Right now: The incorrect tests are the tests where F is not 00.
     //for(int i=0; i<100; i++)
+    tra = new();
     forever
     begin
-      tra = new();
+      void'(tra.randomize());
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
       this.gen2drv.put(tra);
