@@ -11,7 +11,7 @@ class transaction;
   }
   */
   constraint arithmetic_3_to_1 {
-    instruction_selection[5] dist {0 := 3, 1 := 1}; 
+    instruction_selection[2] dist {0 := 3, 1 := 1}; 
   }
   
   function new();
