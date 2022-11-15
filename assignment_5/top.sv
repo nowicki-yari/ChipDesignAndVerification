@@ -50,7 +50,7 @@ module Top;
 
     // At least 20 SUB instructions should be done with register E
     covergroup cg_SB_20 @(posedge clock);
-        
+        option.at_least = 20;
         SB_20: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
             bins sb_bin = {2};
         }

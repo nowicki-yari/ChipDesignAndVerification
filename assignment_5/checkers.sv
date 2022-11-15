@@ -32,7 +32,7 @@ class checkers;
             
             r_ALU = gbmodel.executeALUInstruction(instr);
            
-            gbmodel.toString();
+            //gbmodel.toString();
             
             if(r_ALU == result)
             begin
@@ -42,7 +42,7 @@ class checkers;
                 //s = $sformatf("[%t | CHK] The result is NOT correct.", $time);
                 this.chk2scr.put(0);
             end
-            $display(s);
+            //$display(s);
 
         end
     endtask : check
