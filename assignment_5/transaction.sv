@@ -9,11 +9,11 @@ class transaction;
   constraint instruction_starting_with_A {
     (instruction_selection inside {3'h0,3'h1,3'h4});
   }
-
-  constraint cp_twenty_percent {
-    instruction_selection dist {7 := 2, [0:6] :/ 8};
-  }
   */
+  constraint arithmetic_3_to_1 {
+    instruction_selection[5] dist {0 := 3, 1 := 1}; 
+  }
+  
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
