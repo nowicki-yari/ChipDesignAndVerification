@@ -14,7 +14,7 @@ vlog -sv test.sv
 vlog -sv top.sv 
 vlog -sv transaction.sv
 
-vsim -voptargs="+acc" -coverage Top
+vsim -voptargs="+acc" Top
 
 add wave sim:/Top/gb_i/clock
 add wave sim:/Top/gb_i/reset
