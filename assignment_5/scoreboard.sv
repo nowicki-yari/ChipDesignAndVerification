@@ -29,7 +29,7 @@ class scoreboard;
                 incorrect_tests += 1;
             end
         end
-        $display($get_coverage())
+        $display($get_coverage());
     endtask : score
 
 
