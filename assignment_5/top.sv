@@ -56,7 +56,7 @@ module Top;
         }
 
         regE: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
-            bins regE_bin = {4};
+            bins regE_bin = {3};
         }
 
         cx: cross SB_20, regE {
@@ -80,7 +80,7 @@ module Top;
             bins logical = {1};
         }
         cp_regA: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
-            bins regA = {0};
+            bins regA = {7};
         }
 
         cx: cross cp_ALU_instruction_type, cp_regA {
