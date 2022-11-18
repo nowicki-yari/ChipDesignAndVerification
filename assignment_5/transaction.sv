@@ -10,6 +10,8 @@ class transaction;
     (instruction_selection inside {3'h0,3'h1,3'h4});
   }
   */
+
+  // The amount of arithmetic operations should roughly be 3 times the amount of logical operations
   constraint arithmetic_3_to_1 {
     instruction_selection[2] dist {0 := 3, 1 := 1}; 
   }

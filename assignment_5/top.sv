@@ -56,7 +56,7 @@ module Top;
         }
 
         regE: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
-            bins regE_bin = {5};
+            bins regE_bin = {4};
         }
 
         cx: cross SB_20, regE {
