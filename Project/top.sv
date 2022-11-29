@@ -17,6 +17,7 @@ module Top;
         .reset(gb_i.reset),
         .clock(clock),
         .instruction(gb_i.instruction),
+        .data(gb_i.data),
         .valid(gb_i.valid),
         .probe(gb_i.probe)
     );
@@ -25,7 +26,7 @@ module Top;
     test tst(gb_i);
 
     // Coverage
-
+/*
     // At least 100 XORs are executed after immediately after a SBC
     covergroup cg_XOR_100_after_SBC @(posedge clock);
         option.at_least = 100;
@@ -101,7 +102,7 @@ module Top;
         inst_cg_SB_20 = new();
 
     end
-
+*/
     
 
 endmodule : Top
