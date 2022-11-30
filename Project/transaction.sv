@@ -12,8 +12,8 @@ class transaction;
   */
 
   // The amount of arithmetic operations should roughly be 3 times the amount of logical operations
-  constraint arithmetic_3_to_1 {
-    instruction_selection[2] dist {0 := 3, 1 := 1}; 
+  constraint arithmetic_and_logical {
+    instruction_type == 2'b10;
   }
   
   function new();

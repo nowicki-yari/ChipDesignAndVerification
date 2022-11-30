@@ -43,7 +43,6 @@ class gameboyprocessor;
        perf|ms the same operation on its 
        internal registers as the DUT. */
     function longint executeALUInstruction(byte instr);
-      
         /******** content should go here ********/
         // Arithmetic | logic
         if (instr[7:6] == 2'b10)
@@ -335,7 +334,7 @@ class gameboyprocessor;
         // LOAD
         end else if (instr[7:6] == 2'b01)
         begin
-            if(instr[5:3] == 3'b000) // B (oper&)
+            if(instr[5:3] == 3'b000) // B (operand)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -361,7 +360,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.B = this.A;
                 end
-            end else if(instr[5:3] == 3'b001) // C (oper&)
+            end else if(instr[5:3] == 3'b001) // C (operand)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -387,7 +386,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.C = this.A;
                 end
-            end else if(instr[5:3] == 3'b010) // D (oper&)
+            end else if(instr[5:3] == 3'b010) // D (operand)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
