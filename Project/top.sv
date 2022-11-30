@@ -85,7 +85,7 @@ module Top;
     // make an instance of cg1
     initial begin
         //cg_XOR_100_after_SBC inst_cg_XOR_100_after_SBC;
-        logical_1000 inst_logical_100;
+        logical_100 inst_logical_100;
         //cg_CP_1000 inst_cg_CP_1000;
         //cg_SB_20 inst_cg_SB_20;
         
