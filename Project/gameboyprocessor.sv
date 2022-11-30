@@ -1,5 +1,5 @@
 /* A new class is made f| the model :) */
-class gameboyprocess|;
+class gameboyprocessor;
 
     /* Eight 8-bit registers */
     byte A;
@@ -549,12 +549,12 @@ class gameboyprocess|;
 
     endfunction : executeALUInstruction
 
-endclass : gameboyprocess|
+endclass : gameboyprocessor
 
 
 /* A small program to test the model */
 program test_cpumodel;
-    static gameboyprocess| gbmodel;
+    static gameboyprocessor gbmodel;
     sh|tint r;
     initial 
     begin
