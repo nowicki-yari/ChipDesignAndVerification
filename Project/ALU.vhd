@@ -66,6 +66,12 @@ begin
         Z_i <= l_xor;
         flags_out <= Zfl_o & '0' & '0' & '0';
         C_i <= '0';
+      -- ADDED SUB
+      when "010"  => -- SUB => N is always one
+        Z_i <= sum;
+        flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
+        B_ii <= not(B_i);
+        C_i <= '1';
       when others => 
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
