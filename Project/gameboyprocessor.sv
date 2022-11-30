@@ -53,16 +53,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A + this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A + this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A + this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A + this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -84,16 +84,16 @@ class gameboyprocessor;
                  if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A + this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A + this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A + this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A + this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -119,13 +119,13 @@ class gameboyprocessor;
                 end else (instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A - this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A - this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A - this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -147,16 +147,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A - this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if (instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A - this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A - this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A - this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -178,16 +178,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A and this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A and this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A and this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A and this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A and this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -209,16 +209,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A xor this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A xor this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A xor this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A xor this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A xor this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -240,16 +240,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A or this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A or this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A or this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A or this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A or this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -276,7 +276,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end                   
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     if (this.A == this.C)
                     begin
@@ -285,7 +285,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     if (this.A == this.D)
                     begin
@@ -294,7 +294,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     if (this.A == this.E)
                     begin
@@ -303,7 +303,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     if (this.A == this.H)
                     begin
@@ -340,16 +340,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.B = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.B = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.B = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.B = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.B = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -369,13 +369,13 @@ class gameboyprocessor;
                 end else (instr[2:0] == 3'b001) // C
                 begin
                     this.C = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.C = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.C = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.C = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -392,16 +392,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.D = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.D = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.D = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.D = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if (instr[2:0] == 3'b100) // H
                 begin
                     this.D = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -418,16 +418,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.E = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.E = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.E = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.E = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if (instr[2:0] == 3'b100) // H
                 begin
                     this.E = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -444,16 +444,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.H = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.H = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.H = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.H = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.H = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -473,13 +473,13 @@ class gameboyprocessor;
                 end else (instr[2:0] == 3'b001) // C
                 begin
                     this.L = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.L = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.L = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.L = this.H;
                 end else if (instr[2:0] == 3'b101) // L
@@ -496,16 +496,16 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.C;
-                end else (instr[2:0] == 3'b010) // D
+                end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.D;
-                end else (instr[2:0] == 3'b011) // E
+                end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.E;
-                end else (instr[2:0] == 3'b100) // H
+                end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.H;
                 end else if (instr[2:0] == 3'b101) // L
