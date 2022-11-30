@@ -366,7 +366,7 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.C = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.C = this.C;
                 end else if(instr[2:0] == 3'b010) // D
@@ -470,7 +470,7 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.L = this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.L = this.C;
                 end else if(instr[2:0] == 3'b010) // D
