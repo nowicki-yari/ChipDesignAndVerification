@@ -72,7 +72,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A + 8'h00;
                 end else begin // A
-                    this.A = this.A + this.A
+                    this.A = this.A + this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -103,7 +103,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A + 8'h00;
                 end else begin // A
-                    this.A = this.A + this.A
+                    this.A = this.A + this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -135,7 +135,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A - 8'h00;
                 end else begin // A
-                    this.A = this.A - this.A
+                    this.A = this.A - this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -166,7 +166,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A - 8'h00;
                 end else begin // A
-                    this.A = this.A - this.A
+                    this.A = this.A - this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -197,7 +197,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A and 8'h00;
                 end else begin // A
-                    this.A = this.A and this.A
+                    this.A = this.A and this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -228,7 +228,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A xor 8'h00;
                 end else begin // A
-                    this.A = this.A xor this.A
+                    this.A = this.A xor this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -259,7 +259,7 @@ class gameboyprocessor;
                 begin
                     this.A = this.A or 8'h00;
                 end else begin // A
-                    this.A = this.A or this.A
+                    this.A = this.A or this.A;
                 end
                 if (this.A == 0)
                 begin
