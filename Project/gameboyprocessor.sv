@@ -1,5 +1,5 @@
-/* A new class is made for the model :) */
-class gameboyprocessor;
+/* A new class is made f| the model :) */
+class gameboyprocess|;
 
     /* Eight 8-bit registers */
     byte A;
@@ -15,7 +15,7 @@ class gameboyprocessor;
       are initialised. A simplication was done,
       because the LOAD instructions are not 
       implemented. Hence, all values are constant 
-      (except for those of A and F).*/
+      (except f| those of A & F).*/
     function new();
         this.A = 0;
         this.B = 1;
@@ -37,15 +37,15 @@ class gameboyprocessor;
     endtask : toString
 
 
-    /* Here is the bread-and-butter of the 
+    /* Here is the bread-&-butter of the 
        model. Similar to the DUT, an instruction
        can be fed to the model. The model 
-       performs the same operation on its 
+       perf|ms the same operation on its 
        internal registers as the DUT. */
-    function shortint executeALUInstruction(byte instr);
+    function sh|tint executeALUInstruction(byte instr);
       
         /******** content should go here ********/
-        // Arithmetic or logic
+        // Arithmetic | logic
         if (instr[7:6] == 2'b10)
         begin
             if(instr[5:3] == 3'b000) // ADD
@@ -116,7 +116,7 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A - this.B;
-                end else (instr[2:0] == 3'b001) // C
+                end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
                 end else if(instr[2:0] == 3'b010) // D
@@ -173,93 +173,93 @@ class gameboyprocessor;
                     this.F[7] = 1'b0;
                 end
                 this.F[6:4] = 3'b100;
-            end else if (instr[5:3] == 3'b100) // AND
+            end else if (instr[5:3] == 3'b100) // &
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
-                    this.A = this.A and this.B;
+                    this.A = this.A & this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
-                    this.A = this.A and this.C;
+                    this.A = this.A & this.C;
                 end else if(instr[2:0] == 3'b010) // D
                 begin
-                    this.A = this.A and this.D;
+                    this.A = this.A & this.D;
                 end else if(instr[2:0] == 3'b011) // E
                 begin
-                    this.A = this.A and this.E;
+                    this.A = this.A & this.E;
                 end else if(instr[2:0] == 3'b100) // H
                 begin
-                    this.A = this.A and this.H;
+                    this.A = this.A & this.H;
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
-                    this.A = this.A and this.L;
+                    this.A = this.A & this.L;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
-                    this.A = this.A and 8'h00;
+                    this.A = this.A & 8'h00;
                 end else begin // A
-                    this.A = this.A and this.A;
+                    this.A = this.A & this.A;
                 end
                 if (this.A == 0)
                 begin
                     this.F[7] = 1'b0;
                 end
                 this.F[6:4] = 3'b010;
-            end else if (instr[5:3] == 3'b101) // XOR
+            end else if (instr[5:3] == 3'b101) // ^
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
-                    this.A = this.A xor this.B;
+                    this.A = this.A ^ this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
-                    this.A = this.A xor this.C;
+                    this.A = this.A ^ this.C;
                 end else if(instr[2:0] == 3'b010) // D
                 begin
-                    this.A = this.A xor this.D;
+                    this.A = this.A ^ this.D;
                 end else if(instr[2:0] == 3'b011) // E
                 begin
-                    this.A = this.A xor this.E;
+                    this.A = this.A ^ this.E;
                 end else if(instr[2:0] == 3'b100) // H
                 begin
-                    this.A = this.A xor this.H;
+                    this.A = this.A ^ this.H;
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
-                    this.A = this.A xor this.L;
+                    this.A = this.A ^ this.L;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
-                    this.A = this.A xor 8'h00;
+                    this.A = this.A ^ 8'h00;
                 end else begin // A
-                    this.A = this.A xor this.A;
+                    this.A = this.A ^ this.A;
                 end
                 if (this.A == 0)
                 begin
                     this.F[7] = 1'b0;
                 end
                 this.F[6:4] = 3'b000;
-            end else if (instr[5:3] == 3'b110) // OR
+            end else if (instr[5:3] == 3'b110) // |
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
-                    this.A = this.A or this.B;
+                    this.A = this.A | this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
-                    this.A = this.A or this.C;
+                    this.A = this.A | this.C;
                 end else if(instr[2:0] == 3'b010) // D
                 begin
-                    this.A = this.A or this.D;
+                    this.A = this.A | this.D;
                 end else if(instr[2:0] == 3'b011) // E
                 begin
-                    this.A = this.A or this.E;
+                    this.A = this.A | this.E;
                 end else if(instr[2:0] == 3'b100) // H
                 begin
-                    this.A = this.A or this.H;
+                    this.A = this.A | this.H;
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
-                    this.A = this.A or this.L;
+                    this.A = this.A | this.L;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
-                    this.A = this.A or 8'h00;
+                    this.A = this.A | 8'h00;
                 end else begin // A
-                    this.A = this.A or this.A;
+                    this.A = this.A | this.A;
                 end
                 if (this.A == 0)
                 begin
@@ -335,7 +335,7 @@ class gameboyprocessor;
         // LOAD
         end else if (instr[7:6] == 2'b01)
         begin
-            if(instr[5:3] == 3'b000) // B (operand)
+            if(instr[5:3] == 3'b000) // B (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -361,7 +361,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.B = this.A;
                 end
-            end else if(instr[5:3] == 3'b001) // C (operand)
+            end else if(instr[5:3] == 3'b001) // C (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -387,7 +387,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.C = this.A;
                 end
-            end else if(instr[5:3] == 3'b010) // D (operand)
+            end else if(instr[5:3] == 3'b010) // D (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -413,7 +413,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.D = this.A;
                 end
-            end else if(instr[5:3] == 3'b011) // E (operand)
+            end else if(instr[5:3] == 3'b011) // E (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -439,7 +439,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.E = this.A;
                 end
-            end else if(instr[5:3] == 3'b100) // H (operand)
+            end else if(instr[5:3] == 3'b100) // H (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -465,7 +465,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.H = this.A;
                 end
-            end else if(instr[5:3] == 3'b101) // L (operand)
+            end else if(instr[5:3] == 3'b101) // L (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -491,7 +491,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.L = this.A;
                 end
-            end else if(instr[5:3] == 3'b111) // A (operand)
+            end else if(instr[5:3] == 3'b111) // A (oper&)
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
@@ -549,13 +549,13 @@ class gameboyprocessor;
 
     endfunction : executeALUInstruction
 
-endclass : gameboyprocessor
+endclass : gameboyprocess|
 
 
 /* A small program to test the model */
 program test_cpumodel;
-    static gameboyprocessor gbmodel;
-    shortint r;
+    static gameboyprocess| gbmodel;
+    sh|tint r;
     initial 
     begin
         /* instantiate model */
