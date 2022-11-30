@@ -42,7 +42,7 @@ class gameboyprocessor;
        can be fed to the model. The model 
        perf|ms the same operation on its 
        internal registers as the DUT. */
-    function sh|tint executeALUInstruction(byte instr);
+    function longint executeALUInstruction(byte instr);
       
         /******** content should go here ********/
         // Arithmetic | logic
@@ -555,7 +555,7 @@ endclass : gameboyprocessor
 /* A small program to test the model */
 program test_cpumodel;
     static gameboyprocessor gbmodel;
-    sh|tint r;
+    longint r;
     initial 
     begin
         /* instantiate model */
