@@ -53,42 +53,19 @@ begin
   -------------------------------------------------------------------------------
   -- OUTPUT SELECTION
   -------------------------------------------------------------------------------
-  PMUX: process(operation_i, A_i, B_i, sum, Cfl_i, Zfl_o, Hfl_o, Cfl_o, l_and, l_xor, l_or)
+  PMUX: process(operation_i, B_i, sum, Zfl_o, Nfl_o, Hfl_o, Cfl_o, l_and, l_xor, l_or)
   begin
     B_ii <= B_i;
+    C_i <= '0';
     case operation_i is
       when "001"  => -- ADC => N is always zero
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
         C_i <= Cfl_i;
-      when "010"  => -- SUB => N is always one
-        Z_i <= sum;
-        flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
-        B_ii <= not(B_i);
-        C_i <= '1';
-      when "011"  => -- SBC => N is always one
-        Z_i <= sum;
-        flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
-        B_ii <= not(B_i);
-        C_i <= not(Cfl_i);
-
-      when "100"  => -- AND
-        Z_i <= l_and;
-        flags_out <= Zfl_o & '0' & '1' & '0';
-      when "101"  => -- XOR
+      when "101"  => -- xor
         Z_i <= l_xor;
         flags_out <= Zfl_o & '0' & '0' & '0';
         C_i <= '0';
-      when "110"  => -- OR
-        Z_i <= l_or;
-        flags_out <= Zfl_o & '0' & '0' & '0';
-        C_i <= '0';
-      when "111"  => -- CP
-        Z_i <= A_i;
-        flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
-        B_ii <= not(B_i);
-        C_i <= '1';
-
       when others => 
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
@@ -104,12 +81,12 @@ begin
   RCA: for i in 0 to 7 generate
     LSB: if i=0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor C_i;
-      carry(i) <= (A_i(i) and B_ii(i)) or (C_i and (A_i(i) xor B_ii(i)));
+      carry(i) <= (A_i(i) and B_i(i)) or (C_i and (A_i(i) xor B_i(i)));
     end generate LSB;
 
     OTHER: if i>0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor carry(i-1);
-      carry(i) <= (A_i(i) and B_ii(i)) or (carry(i-1) and (A_i(i) xor B_ii(i)));
+      carry(i) <= (A_i(i) and B_i(i)) or (carry(i-1) and (A_i(i) xor B_i(i)));
     end generate OTHER;
   end generate RCA;
 
@@ -117,9 +94,9 @@ begin
   -------------------------------------------------------------------------------
   -- Logical operations
   -------------------------------------------------------------------------------
-  l_and <= A_i and B_ii;
-  l_xor <= A_i xor B_ii;
-  l_or <= A_i or B_ii;
+  l_and <= A_i and B_i;
+  l_xor <= A_i or B_i;
+  l_or <= A_i xor B_i;
 
 
   -------------------------------------------------------------------------------

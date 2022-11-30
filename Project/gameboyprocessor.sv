@@ -76,9 +76,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[1] = 3'b0;
+                this.F[6] = 3'b0;
             end else if (instr[5:3] == 3'b001) // ADC
             begin
                  if(instr[2:0] == 3'b000) // B
@@ -107,9 +107,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[1] = 3'b0;
+                this.F[6] = 3'b0;
                 // TODO set carries
             end else if ((instr[5:3] == 3'b010)) // SUB
             begin
@@ -139,9 +139,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[3:1] = 3'b100;
+                this.F[6:4] = 3'b100;
             end else if (instr[5:3] == 3'b011) // SBC
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -170,9 +170,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[3:1] = 3'b100;
+                this.F[6:4] = 3'b100;
             end else if (instr[5:3] == 3'b100) // AND
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -201,9 +201,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[3:1] = 3'b010;
+                this.F[6:4] = 3'b010;
             end else if (instr[5:3] == 3'b101) // XOR
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -232,9 +232,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[3:1] = 3'b000;
+                this.F[6:4] = 3'b000;
             end else if (instr[5:3] == 3'b110) // OR
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -263,74 +263,74 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[0] = 1'b0;
+                    this.F[7] = 1'b0;
                 end
-                this.F[3:1] = 3'b000;
+                this.F[6:4] = 3'b000;
             end else begin // CP
                 if(instr[2:0] == 3'b000) // B
                 begin
                     if (this.A == this.B)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.B)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end                   
                 end else (instr[2:0] == 3'b001) // C
                 begin
                     if (this.A == this.C)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.C)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end  
                 end else (instr[2:0] == 3'b010) // D
                 begin
                     if (this.A == this.D)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.D)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end  
                 end else (instr[2:0] == 3'b011) // E
                 begin
                     if (this.A == this.E)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.E)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end  
                 end else (instr[2:0] == 3'b100) // H
                 begin
                     if (this.A == this.H)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.H)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end  
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     if (this.A == this.H)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end else if (this.A < this.H)
                     begin
-                        this.F[3] = 1'b1; // C
+                        this.F[4] = 1'b1; // C
                     end  
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     if (this.A == 8'h00)
                     begin
-                        this.F[0] = 1'b1; // Z
+                        this.F[7] = 1'b1; // Z
                     end 
                 end else begin // A
-                    this.F[0] = 1'b1; // Z  
+                    this.F[7] = 1'b1; // Z  
                 end
-                this.F[1];
+                
             end
         // LOAD
         end else if (instr[7:6] == 2'b01)
