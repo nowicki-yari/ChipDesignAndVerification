@@ -71,7 +71,7 @@ module Top;
 
     
     
-
+    */
     // At least 327 logical instructions are done without register A
     covergroup logical_327_no_regA @(posedge clock);
         option.at_least = 327;
@@ -91,18 +91,18 @@ module Top;
 
     // make an instance of cg1
     initial begin
-        cg_XOR_100_after_SBC inst_cg_XOR_100_after_SBC;
+        //cg_XOR_100_after_SBC inst_cg_XOR_100_after_SBC;
         logical_327_no_regA inst_logical_327_no_regA;
-        cg_CP_1000 inst_cg_CP_1000;
-        cg_SB_20 inst_cg_SB_20;
+        //cg_CP_1000 inst_cg_CP_1000;
+        //cg_SB_20 inst_cg_SB_20;
         
-        inst_cg_XOR_100_after_SBC = new();
+        //inst_cg_XOR_100_after_SBC = new();
         inst_logical_327_no_regA = new();
-        inst_cg_CP_1000 = new();
-        inst_cg_SB_20 = new();
+        //inst_cg_CP_1000 = new();
+        //inst_cg_SB_20 = new();
 
     end
-*/
+
     
 
 endmodule : Top

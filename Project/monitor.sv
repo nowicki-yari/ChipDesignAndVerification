@@ -4,7 +4,7 @@ class monitor;
   virtual gb_iface ifc;
 
   /* Mailbox */
-  mailbox #(shortint) mon2chk; /* 16 bit */
+  mailbox #(longint) mon2chk; /* 64 bit */
 
   /* Constructor */
   function new(virtual gb_iface ifc, mailbox #(shortint) m2c);

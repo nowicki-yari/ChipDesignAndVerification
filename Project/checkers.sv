@@ -6,12 +6,12 @@ class checkers;
 
     /* mailboxes */
     mailbox #(byte) gen2chk; /* 8 bit */
-    mailbox #(shortint) mon2chk; /* 16 bit */
+    mailbox #(longint) mon2chk; /* 64 bit */
     mailbox #(bit) chk2scr; /* single bit */
 
     byte instr;
-    shortint r_ALU;
-    shortint result;
+    longint r_ALU;
+    longint result;
 
     /* constructor */
     function new(mailbox #(byte) g2c, mailbox #(shortint) m2c, mailbox #(bit) c2s);
