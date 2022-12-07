@@ -21,7 +21,13 @@ class driver;
 
     
     forever begin
-        
+
+        this.ifc.valid <= 1'b1;
+        this.gen2drv.get(tra);
+        this.ifc.instruction <= tra.toByte();
+        @(posedge this.ifc.clock);
+      
+        /*
         this.ifc.valid <= 1'b0;
         this.gen2drv.get(tra);
 
@@ -32,7 +38,7 @@ class driver;
         this.ifc.instruction <= tra.toByte();
 
         @(posedge this.ifc.clock);
-
+        */
     end /* forever */
     
 
