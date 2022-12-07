@@ -333,7 +333,7 @@ class gameboyprocessor;
                     end  
                 end else if(instr[2:0] == 3'b100) // H
                 begin
-                    $display({this.A, this.F})
+                    $display({this.A, this.F});
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
