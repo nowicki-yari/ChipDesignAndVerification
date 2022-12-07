@@ -51,7 +51,8 @@ class gameboyprocessor;
        internal registers as the DUT. */
     function longint executeALUInstruction(byte instr);
         /******** content should go here ********/
-        $display("[%t | GBP] Received instruction %x", instr);
+        $timeformat(-9,0," ns" , 10); /* format timing */
+        $display("[%t | GBP] Received instruction %x", $time, instr);
         // Arithmetic | logic
         if (instr[7:6] == 2'b10)
         begin
