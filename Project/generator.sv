@@ -27,12 +27,8 @@ class generator;
     begin
       void'(tra.randomize());
       instr = tra.toByte();
-      s = $sformatf("[%t | GEN] instruction before mailbox %x", $time, instr);
-      $display(s);
       this.gen2chk.put(instr);
       this.gen2drv.put(instr);
-      s = $sformatf("[%t | GEN] instruction after mailbox %x", $time, instr);
-      $display(s);
 
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
