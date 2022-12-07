@@ -7,7 +7,7 @@
 
 class environment;
 
-  mailbox #(transaction) gen2drv;
+  mailbox #(byte) gen2drv;
   mailbox #(longint) mon2chk;
   mailbox #(byte) gen2chk;
   mailbox #(bit) chk2scr;
