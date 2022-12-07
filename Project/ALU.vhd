@@ -78,6 +78,10 @@ begin
         flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
         B_ii <= not(B_i);
         C_i <= not(Cfl_i);
+      -- ADDED AND
+      when "100"  => -- AND
+        Z_i <= l_and;
+        flags_out <= Zfl_o & '0' & '1' & '0';
       when others => 
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
