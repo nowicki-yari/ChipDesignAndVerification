@@ -49,8 +49,8 @@ class environment;
     fork
       this.drv.run_addition();
       this.mon.run();
-      this.gen.run();
       this.check.check();
+      this.gen.run();
       this.board.score();
     join_any;
 
