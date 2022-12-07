@@ -93,12 +93,12 @@ begin
   RCA: for i in 0 to 7 generate
     LSB: if i=0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor C_i;
-      carry(i) <= (A_i(i) and B_i(i)) or (C_i and (A_i(i) xor B_i(i)));
+      carry(i) <= (A_i(i) and B_ii(i)) or (C_i and (A_i(i) xor B_ii(i))); -- changed B_i(i)) with B_ii(i))
     end generate LSB;
 
     OTHER: if i>0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor carry(i-1);
-      carry(i) <= (A_i(i) and B_i(i)) or (carry(i-1) and (A_i(i) xor B_i(i)));
+      carry(i) <= (A_i(i) and B_ii(i)) or (carry(i-1) and (A_i(i) xor B_ii(i))); -- changed B_i(i)) with B_ii(i))
     end generate OTHER;
   end generate RCA;
 
@@ -107,8 +107,8 @@ begin
   -- Logical operations
   -------------------------------------------------------------------------------
   l_and <= A_i and B_i;
-  l_xor <= A_i or B_i;
-  l_or <= A_i xor B_i;
+  l_xor <= A_i xor B_i; -- XOR was switched with OR
+  l_or <= A_i or B_i;
 
 
   -------------------------------------------------------------------------------
