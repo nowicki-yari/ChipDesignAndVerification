@@ -5,7 +5,7 @@ class generator;
   mailbox #(transaction) gen2drv;
   mailbox #(byte) gen2chk;
 
-  function new(mailbox #(transaction) g2d, mailbox #(byte) g2c);
+  function new(mailbox #(byte) g2d, mailbox #(byte) g2c);
     this.gen2drv = g2d;
     this.gen2chk = g2c;
   endfunction : new
@@ -33,7 +33,7 @@ class generator;
       this.gen2drv.put(instr);
       s = $sformatf("[%t | GEN] instruction after mailbox %x", $time, instr);
       $display(s);
-      
+
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
       
