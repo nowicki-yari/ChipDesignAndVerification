@@ -33,4 +33,4 @@ class transaction;
     return byte'(this.instruction_type * 2**(6) + this.instruction_selection * 2**(3) + this.operand_selection);
   endfunction : toByte;
 
-endclass : transaction;
+endclass : transaction
