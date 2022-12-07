@@ -2,7 +2,7 @@
 
 class generator;
 
-  mailbox #(transaction) gen2drv;
+  mailbox #(byte) gen2drv;
   mailbox #(byte) gen2chk;
 
   function new(mailbox #(byte) g2d, mailbox #(byte) g2c);
