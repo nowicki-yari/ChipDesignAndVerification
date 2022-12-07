@@ -167,26 +167,50 @@ class gameboyprocessor;
                 end else if (instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
+                    carry[0] = (this.A[0] & this.C[0]) | (this.F[0] & (this.A[0] ^ this.C[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.C[i]) | (carry[i-1] & (this.A[i] ^ this.C[i]));
+                    end
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A - this.D;
+                    carry[0] = (this.A[0] & this.D[0]) | (this.F[0] & (this.A[0] ^ this.D[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.D[i]) | (carry[i-1] & (this.A[i] ^ this.D[i]));
+                    end
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A - this.E;
+                    carry[0] = (this.A[0] & this.E[0]) | (this.F[0] & (this.A[0] ^ this.E[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.E[i]) | (carry[i-1] & (this.A[i] ^ this.E[i]));
+                    end
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A - this.H;
+                    carry[0] = (this.A[0] & this.H[0]) | (this.F[0] & (this.H[0] ^ this.H[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.H[i]) | (carry[i-1] & (this.A[i] ^ this.H[i]));
+                    end
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     this.A = this.A - this.L;
+                    carry[0] = (this.A[0] & this.L[0]) | (this.F[0] & (this.A[0] ^ this.L[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.L[i]) | (carry[i-1] & (this.A[i] ^ this.L[i]));
+                    end
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     this.A = this.A - 8'h00;
+                    carry[0] = (this.A[0] & this.A[0]) | (this.F[0] & (this.A[0] ^ this.A[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.A[i]) | (carry[i-1] & (this.A[i] ^ this.A[i]));
+                    end
                 end else begin // A
                     this.A = this.A - this.A;
-                    carry[0] = (this.A[0] & this.B[0]) | (this.F[0] & (this.A[0] ^ this.B[0]));
+                    carry[0] = (this.A[0] & this.A[0]) | (this.F[0] & (this.A[0] ^ this.A[0]));
                     for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.B[i]) | (carry[i-1] & (this.A[i] ^ this.B[i]));
+                        carry[i] = (this.A[i] & this.A[i]) | (carry[i-1] & (this.A[i] ^ this.A[i]));
                     end
                 end
                 if (this.A == 0)
