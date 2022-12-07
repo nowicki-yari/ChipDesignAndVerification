@@ -29,6 +29,7 @@ class checkers;
         begin
             this.mon2chk.get(result);
             this.gen2chk.get(instr);
+            
             r_ALU = gbmodel.executeALUInstruction(instr);
            
             gbmodel.toString();

@@ -3,7 +3,7 @@
 class driver;
 
   virtual gb_iface ifc;
-  mailbox #(transaction) gen2drv;
+  mailbox #(byte) gen2drv;
 
   function new(virtual gb_iface ifc, mailbox #(transaction) g2d);
     this.ifc = ifc;
@@ -12,7 +12,7 @@ class driver;
 
   task run_addition();
     string s;
-    transaction tra;
+    byte tra;
     
     $timeformat(-9,0," ns" , 10);
 
@@ -28,9 +28,9 @@ class driver;
         @(posedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
-        s = $sformatf("[%t | DRV] I will execute instruction %x", $time, tra.toByte());
+        s = $sformatf("[%t | DRV] I will execute instruction %x", $time, tra);
         $display(s);
-        this.ifc.instruction <= tra.toByte();
+        this.ifc.instruction <= tra;
 
         @(posedge this.ifc.clock);
 

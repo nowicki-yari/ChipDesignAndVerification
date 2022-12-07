@@ -13,7 +13,7 @@ class generator;
   task run;
     string s;
     transaction tra;
-
+    byte instr;
     $timeformat(-9,0," ns" , 10);
 
     s = $sformatf("[%t | GEN] I will start generating for the mailbox", $time);
@@ -26,8 +26,14 @@ class generator;
     forever
     begin
       void'(tra.randomize());
-      this.gen2chk.put(tra.toByte());
-      this.gen2drv.put(tra);
+      instr = tra.toByte();
+      s = $sformatf("[%t | GEN] instruction before mailbox %x", $time, instr);
+      $display(s);
+      this.gen2chk.put(instr);
+      this.gen2drv.put(instr);
+      s = $sformatf("[%t | GEN] instruction after mailbox %x", $time, instr);
+      $display(s);
+      
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
       
