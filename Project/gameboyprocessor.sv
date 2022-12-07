@@ -82,9 +82,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[7] = 1'b0;
+                    this.F[7] = 1'b0; // Set if result is 0
                 end
-                this.F[6] = 3'b0;
+                this.F[6] = 3'b0; // Reset
             end else if (instr[5:3] == 3'b001) // ADC
             begin
                  if(instr[2:0] == 3'b000) // B
@@ -147,7 +147,7 @@ class gameboyprocessor;
                 begin
                     this.F[7] = 1'b0;
                 end
-                this.F[6:4] = 3'b100;
+                this.F[6:4] = 3'b111;
             end else if (instr[5:3] == 3'b011) // SBC
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -178,7 +178,7 @@ class gameboyprocessor;
                 begin
                     this.F[7] = 1'b0;
                 end
-                this.F[6:4] = 3'b100;
+                this.F[6:4] = 3'b111;
             end else if (instr[5:3] == 3'b100) // &
             begin
                 if(instr[2:0] == 3'b000) // B
