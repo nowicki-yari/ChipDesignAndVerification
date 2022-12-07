@@ -82,6 +82,11 @@ begin
       when "100"  => -- AND
         Z_i <= l_and;
         flags_out <= Zfl_o & '0' & '1' & '0';
+      -- ADDED OR
+      when "110"  => -- OR
+        Z_i <= l_or;
+        flags_out <= Zfl_o & '0' & '0' & '0';
+        C_i <= '0';
       when others => 
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
