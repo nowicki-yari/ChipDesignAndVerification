@@ -23,10 +23,10 @@ class environment;
   function new(virtual gb_iface ifc);
     this.ifc = ifc;
 
-    this.gen2drv = new(5);
-    this.mon2chk = new(5);
-    this.gen2chk = new(5);
-    this.chk2scr = new(5);
+    this.gen2drv = new(1);
+    this.mon2chk = new(1);
+    this.gen2chk = new(1);
+    this.chk2scr = new(1);
 
     this.gen = new(this.gen2drv, this.gen2chk);
     this.drv = new(ifc, this.gen2drv);
