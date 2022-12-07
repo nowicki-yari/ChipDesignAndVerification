@@ -39,7 +39,7 @@ class gameboyprocessor;
 */
     task toString();
         $display({this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L});
-    endtask toString();
+    endtask : toString
 
 
     /* Here is the bread-&-butter of the 
