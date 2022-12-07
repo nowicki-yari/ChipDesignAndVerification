@@ -160,6 +160,10 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A - this.B;
+                    carry[0] = (this.A[0] & this.B[0]) | (this.F[0] & (this.A[0] ^ this.B[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.B[i]) | (carry[i-1] & (this.A[i] ^ this.B[i]));
+                    end
                 end else if (instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
