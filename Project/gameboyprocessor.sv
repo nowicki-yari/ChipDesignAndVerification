@@ -238,11 +238,13 @@ class gameboyprocessor;
                 end else begin // A
                     this.A = this.A ^ this.A;
                 end
+                this.F[6:4] = 3'b000;
                 if (this.A == 0)
                 begin
+                    this.F[7] = 1'b1;
+                end else begin
                     this.F[7] = 1'b0;
                 end
-                this.F[6:4] = 3'b000;
             end else if (instr[5:3] == 3'b110) // |
             begin
                 if(instr[2:0] == 3'b000) // B
@@ -268,7 +270,6 @@ class gameboyprocessor;
                     this.A = this.A | 8'h00;
                 end else begin // A
                     this.A = this.A | this.A;
-                    $display("OR WITH A, result is %x", this.A);
                 end
                 this.F[6:4] = 3'b000;
                 if (this.A == 0)
