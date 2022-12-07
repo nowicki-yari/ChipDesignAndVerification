@@ -1,7 +1,7 @@
 /* A new class is made f| the model :) */
 class gameboyprocessor;
     string s;
-    $timeformat(-9,0," ns" , 10); /* format timing */
+    
     /* Eight 8-bit registers */
     byte A;
     byte B;
@@ -39,11 +39,10 @@ class gameboyprocessor;
     endtask : toString
 */
     task toString();
+        $timeformat(-9,0," ns" , 10); /* format timing */
         s = $sformatf("[%t | GBP] I sampled %x (with actuall gameboymodel %x)", $time, {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L});
         $display(s);
     endtask : toString
-
-        this.mon2chk.put(this.ifc.probe);
 
     /* Here is the bread-&-butter of the 
        model. Similar to the DUT, an instruction
