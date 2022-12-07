@@ -121,6 +121,7 @@ class gameboyprocessor;
             begin
                 if(instr[2:0] == 3'b000) // B
                 begin
+                    $display("Substract A %x with B %x", this.A, this.B);
                     this.A = this.A - this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
