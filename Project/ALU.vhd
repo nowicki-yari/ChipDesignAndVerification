@@ -72,6 +72,12 @@ begin
         flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
         B_ii <= not(B_i);
         C_i <= '1';
+      -- ADDED SBC
+      when "011"  => -- SBC => N is always one
+        Z_i <= sum;
+        flags_out <= Zfl_o & '1' & not(Hfl_o) & not(Cfl_o);
+        B_ii <= not(B_i);
+        C_i <= not(Cfl_i);
       when others => 
         Z_i <= sum;
         flags_out <= Zfl_o & '0' & Hfl_o & Cfl_o;
