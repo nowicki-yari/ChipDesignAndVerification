@@ -28,8 +28,6 @@ class driver;
         @(posedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
-        s = $sformatf("[%t | DRV] I will execute instruction %x", $time, tra);
-        $display(s);
         this.ifc.instruction <= tra;
 
         @(posedge this.ifc.clock);

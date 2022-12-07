@@ -51,8 +51,6 @@ class gameboyprocessor;
        internal registers as the DUT. */
     function longint executeALUInstruction(byte instr);
         /******** content should go here ********/
-        $timeformat(-9,0," ns" , 10); /* format timing */
-        $display("[%t | GBP] Received instruction %x", $time, instr);
         // Arithmetic | logic
         if (instr[7:6] == 2'b10)
         begin
@@ -84,7 +82,9 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
-                    this.F[7] = 1'b0; // Set if result is 0
+                    this.F[7] = 1'b1; // Set if result is 0
+                end else begin
+                    this.F[7] = 1'b0;
                 end
                 this.F[6] = 3'b0; // Reset
             end else if (instr[5:3] == 3'b001) // ADC
@@ -115,6 +115,8 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
+                    this.F[7] = 1'b1; // Set if result is 0
+                end else begin
                     this.F[7] = 1'b0;
                 end
                 this.F[6] = 3'b0;
@@ -147,6 +149,8 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
+                    this.F[7] = 1'b1; // Set if result is 0
+                end else begin
                     this.F[7] = 1'b0;
                 end
                 this.F[6:4] = 3'b111;
@@ -211,6 +215,8 @@ class gameboyprocessor;
                 end
                 if (this.A == 0)
                 begin
+                    this.F[7] = 1'b1; // Set if result is 0
+                end else begin
                     this.F[7] = 1'b0;
                 end
                 this.F[6:4] = 3'b010;
