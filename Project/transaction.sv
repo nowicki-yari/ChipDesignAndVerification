@@ -34,3 +34,5 @@ class transaction;
   endfunction : toByte;
 
 endclass : transaction
+
+`endif
