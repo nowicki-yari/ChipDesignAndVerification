@@ -269,7 +269,7 @@ class gameboyprocessor;
                 end else begin // A
                     this.A = this.A | this.A;
                 end
-                this.F[7:4] = 3'b0000;
+                this.F[7:4] = 4'b0000;
                 if (this.A == 0)
                 begin
                     this.F[7] = 1'b1;
