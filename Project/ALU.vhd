@@ -56,7 +56,7 @@ begin
   PMUX: process(operation_i, B_i, sum, Zfl_o, Nfl_o, Hfl_o, Cfl_o, l_and, l_xor, l_or)
   begin
     B_ii <= B_i;
-    C_i <= '0';
+    -- C_i <= '0'; ?
     case operation_i is
       when "001"  => -- ADC => N is always zero
         Z_i <= sum;
