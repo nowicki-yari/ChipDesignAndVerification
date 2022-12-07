@@ -5,7 +5,7 @@ class driver;
   virtual gb_iface ifc;
   mailbox #(byte) gen2drv;
 
-  function new(virtual gb_iface ifc, mailbox #(transaction) g2d);
+  function new(virtual gb_iface ifc, mailbox #(driver) g2d);
     this.ifc = ifc;
     this.gen2drv = g2d;
   endfunction : new
