@@ -28,8 +28,9 @@ class generator;
       void'(tra.randomize());
       s = $sformatf("[%t | GEN] new instruction %s", $time, tra.toString());
       $display(s);
-      this.gen2drv.put(tra);
+      
       this.gen2chk.put(tra.toByte());
+      this.gen2drv.put(tra);
     end
   endtask : run
 
