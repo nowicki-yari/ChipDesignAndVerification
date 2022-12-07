@@ -333,13 +333,20 @@ class gameboyprocessor;
                     end  
                 end else if(instr[2:0] == 3'b100) // H
                 begin
+                    this.F[7]
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.H)
-                    begin
-                        this.F[4] = 1'b1; // C
-                    end  
+                    end else begin
+                        this.F[7] = 1'b0; // Z
+                    end
+                    carry[0] = (this.A[0] & this.H[0]) | (this.H[0] & (this.A[0] ^ this.H[0]));
+                    for (int i = 1; i <=7; i++) begin
+                        carry[i] = (this.A[i] & this.H[i]) | (carry[i-1] & (this.A[i] ^ this.H[i]));
+                    end
+                    this.F[6] = 1'b1;
+                    this.F[5] = carry[3];
+                    this.F[4] = carry[7];
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     if (this.A == this.H)
