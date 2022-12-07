@@ -180,9 +180,9 @@ class gameboyprocessor;
                     this.A = this.A - 8'h00;
                 end else begin // A
                     this.A = this.A - this.A;
-                    carry[0] = (this.A[0] & this.B[0]) | (this.F[0] and (this.A[0] xor this.B[0]));
+                    carry[0] = (this.A[0] & this.B[0]) | (this.F[0] & (this.A[0] ^ this.B[0]));
                     for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.B[i]) | (carry[i-1] and (this.A[i] xor this.B[i]));
+                        carry[i] = (this.A[i] & this.B[i]) | (carry[i-1] & (this.A[i] ^ this.B[i]));
                     end
                 end
                 if (this.A == 0)
@@ -194,7 +194,7 @@ class gameboyprocessor;
                 this.F[6] = 1'b1;
                 this.F[5] = carry[3];
                 this.F[4] = carry[7];
-                
+
             end else if (instr[5:3] == 3'b100) // &
             begin
                 if(instr[2:0] == 3'b000) // B
