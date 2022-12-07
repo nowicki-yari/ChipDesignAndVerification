@@ -90,7 +90,7 @@ begin
       -- ADDED CP
       when "111"  => -- CP
         Z_i <= A_i;
-        flags_out <= (A_i == B_i) & '1' & not(Hfl_o) & not(Cfl_o); -- Changed (A_i == B_i)
+        flags_out <= (A_i = B_i) & '1' & not(Hfl_o) & not(Cfl_o); -- Changed (A_i == B_i)
         B_ii <= not(B_i);
         C_i <= '1';
       when others => 
