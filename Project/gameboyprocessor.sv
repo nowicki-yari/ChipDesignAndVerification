@@ -40,7 +40,7 @@ class gameboyprocessor;
 */
     task toString();
         $timeformat(-9,0," ns" , 10); /* format timing */
-        s = $sformatf("[%t | GBP] I sampled %x (with actuall gameboymodel %x)", $time, {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L});
+        s = $sformatf("[%t | GBP] I sampled %x (with actuall gameboymodel)", $time, {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L});
         $display(s);
     endtask : toString
 
