@@ -15,6 +15,10 @@ class transaction;
   constraint arithmetic_and_logical {
     instruction_type == 2'b10;
   }
+
+  constraint no_sbc {
+    instruction_selection != 3'b011;
+  }
   
   function new();
     this.instruction_type = 2'h0;
