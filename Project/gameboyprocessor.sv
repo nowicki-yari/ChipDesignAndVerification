@@ -595,7 +595,7 @@ class gameboyprocessor;
         for (int i = 1; i <=7; i++) begin
             carry_f[i] = (this.A[i] & register[i]) | (carry_f[i-1] & (this.A[i] ^ register[i]));
         end
-        return carry_f
+        return carry_f;
     endfunction : computeCarry
 
 
