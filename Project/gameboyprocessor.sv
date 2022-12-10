@@ -235,8 +235,8 @@ class gameboyprocessor;
                     this.F[7] = 1'b0;
                 end
                 this.F[6] = 1'b1;
-                this.F[5] = carry[3];
-                this.F[4] = carry[7];
+                this.F[5] = !carry[3];
+                this.F[4] = !carry[7];
             end else if (instr[5:3] == 3'b100) // &
             begin
                 if(instr[2:0] == 3'b000) // B
