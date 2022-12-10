@@ -87,7 +87,7 @@ class gameboyprocessor;
                 end else begin
                     this.F[7] = 1'b0;
                 end
-                this.F[6] = 3'b0; // Reset
+                this.F[6:4] = 3'b000; // Reset
             end else if (instr[5:3] == 3'b001) // ADC
             begin
                  if(instr[2:0] == 3'b000) // B
