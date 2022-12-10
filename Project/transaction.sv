@@ -18,7 +18,7 @@ class transaction;
  */
 
   constraint ar_log_or_ld {
-    instruction_type == {2'h2, 2'h1};
+    (instruction_type inside {2'h2, 2'h1});
   }
   
   function new();
