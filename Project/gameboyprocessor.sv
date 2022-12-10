@@ -57,6 +57,7 @@ class gameboyprocessor;
         begin
             if(instr[5:3] == 3'b000) // ADD
             begin
+                this.F[4] = 1'b0;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
@@ -218,7 +219,6 @@ class gameboyprocessor;
                 this.F[6] = 1'b1;
                 this.F[5] = carry[3];
                 this.F[4] = carry[7];
-
             end else if (instr[5:3] == 3'b100) // &
             begin
                 if(instr[2:0] == 3'b000) // B
