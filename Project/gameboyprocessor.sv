@@ -90,7 +90,7 @@ class gameboyprocessor;
                 this.F[6:4] = 3'b000; // Reset
             end else if (instr[5:3] == 3'b001) // ADC
             begin
-                 if(instr[2:0] == 3'b000) // B
+                if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
                     carry = computeCarry(this.B); 
@@ -583,7 +583,7 @@ class gameboyprocessor;
 
     function byte computeCarry(byte register);
         byte carry_f;
-        carry_f[0] = (this.A[0] & register[0]) | (register[0] & (this.A[0] ^ register[0]));
+        carry_f[0] = (this.A[0] & register[0]) | (this.F[0] & (this.A[0] ^ register[0]));
         for (int i = 1; i <=7; i++) begin
             carry_f[i] = (this.A[i] & register[i]) | (carry_f[i-1] & (this.A[i] ^ register[i]));
         end

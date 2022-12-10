@@ -108,15 +108,15 @@ begin
   -------------------------------------------------------------------------------
   -- Arithmetic operations
   -------------------------------------------------------------------------------
-  RCA: for i in 0 to 7 generate
+ RCA: for i in 0 to 7 generate
     LSB: if i=0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor C_i;
-      carry(i) <= (A_i(i) and B_ii(i)) or (C_i and (A_i(i) xor B_ii(i))); -- changed B_i(i)) with B_ii(i))
+      carry(i) <= (A_i(i) and B_ii(i)) or (C_i and (A_i(i) xor B_ii(i)));
     end generate LSB;
 
     OTHER: if i>0 generate
       sum(i) <= A_i(i) xor B_ii(i) xor carry(i-1);
-      carry(i) <= (A_i(i) and B_ii(i)) or (carry(i-1) and (A_i(i) xor B_ii(i))); -- changed B_i(i)) with B_ii(i))
+      carry(i) <= (A_i(i) and B_ii(i)) or (carry(i-1) and (A_i(i) xor B_ii(i)));
     end generate OTHER;
   end generate RCA;
 
