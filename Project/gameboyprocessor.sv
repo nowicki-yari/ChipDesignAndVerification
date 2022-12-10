@@ -60,37 +60,37 @@ class gameboyprocessor;
                 this.F[4] = 1'b0;
                 if(instr[2:0] == 3'b000) // B
                 begin
-                    this.A = this.A + this.B;
                     carry = computeCarry(this.B, 1'b0); 
+                    this.A = this.A + this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
-                    this.A = this.A + this.C;
                     carry = computeCarry(this.C, 1'b0); 
+                    this.A = this.A + this.C;
                 end else if(instr[2:0] == 3'b010) // D
                 begin
-                    this.A = this.A + this.D;
                     carry = computeCarry(this.D, 1'b0); 
+                    this.A = this.A + this.D;
                     this.F[5] = carry[3];
                     this.F[4] = carry[7];
                 end else if(instr[2:0] == 3'b011) // E
                 begin
-                    this.A = this.A + this.E;
-                    carry = computeCarry(this.E, 1'b0); 
+                    carry = computeCarry(this.E, 1'b0);
+                    this.A = this.A + this.E;                   
                 end else if(instr[2:0] == 3'b100) // H
                 begin
-                    this.A = this.A + this.H;
                     carry = computeCarry(this.H, 1'b0); 
+                    this.A = this.A + this.H;
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
-                    this.A = this.A + this.L;
                     carry = computeCarry(this.L, 1'b0); 
+                    this.A = this.A + this.L;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
+                    carry = computeCarry(8'h00, 1'b0);
                     this.A = this.A + 8'h00;
-                    carry = computeCarry(8'h00, 1'b0); 
                 end else begin // A
-                    this.A = this.A + this.A;
                     carry = computeCarry(this.A, 1'b0); 
+                    this.A = this.A + this.A;  
                 end
                 if (this.A == 0)
                 begin
@@ -567,8 +567,6 @@ class gameboyprocessor;
                 end
             end
         end
-            this.F[5] = carry[3];
-            this.F[4] = carry[7];
         return {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L};
 
     endfunction : executeALUInstruction
