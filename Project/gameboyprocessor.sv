@@ -70,6 +70,8 @@ class gameboyprocessor;
                 begin
                     this.A = this.A + this.D;
                     carry = computeCarry(this.D, 1'b0); 
+                    this.F[5] = carry[3];
+                    this.F[4] = carry[7];
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A + this.E;
@@ -565,6 +567,7 @@ class gameboyprocessor;
                 end
             end
         end
+
         return {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L};
 
     endfunction : executeALUInstruction
