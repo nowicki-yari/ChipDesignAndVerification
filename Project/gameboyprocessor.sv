@@ -330,9 +330,6 @@ class gameboyprocessor;
                     if (this.A == this.B)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.B)
-                    begin
-                        this.F[4] = 1'b1; // C
                     end
                     carry = computeCarry(this.B);           
                 end else if(instr[2:0] == 3'b001) // C
@@ -340,38 +337,27 @@ class gameboyprocessor;
                     if (this.A == this.C)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.C)
-                    begin
-                        this.F[4] = 1'b1; // C
-                    end  
+                    end
                     carry = computeCarry(this.C); 
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     if (this.A == this.D)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.D)
-                    begin
-                        this.F[4] = 1'b1; // C
-                    end  
+                    end 
                     carry = computeCarry(this.D); 
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     if (this.A == this.E)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.E)
-                    begin
-                        this.F[4] = 1'b1; // C
-                    end  
+                    end 
                     carry = computeCarry(this.E); 
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else begin
-                        this.F[7] = 1'b0; // Z
                     end
                     carry = computeCarry(this.H);
                 end else if (instr[2:0] == 3'b101) // L
@@ -379,10 +365,7 @@ class gameboyprocessor;
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end else if (this.A < this.H)
-                    begin
-                        this.F[4] = 1'b1; // C
-                    end  
+                    end 
                     carry = computeCarry(this.L); 
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
