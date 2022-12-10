@@ -16,14 +16,18 @@ class transaction;
     instruction_type == 2'b10;
   }
  */
+
+  constraint ar_log_or_ld {
+    instruction_type == {2'h2, 2'h1};
+  }
   
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
     this.operand_selection = 3'h0;
 
-    this.instruction_type.rand_mode(0);
-    this.instruction_type = 2'h2;
+    //this.instruction_type.rand_mode(0);
+    //this.instruction_type = 2'h2;
   endfunction : new
 
   function string toString();
