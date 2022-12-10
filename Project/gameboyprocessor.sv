@@ -234,7 +234,7 @@ class gameboyprocessor;
                      
                 end else begin // A
                     carry = computeCarry(this.A, 1'b1);  
-                    this.A = this.A - this.A; 
+                    this.A = this.A - (this.A + !this.F[4]);
                 end
                 if (this.A == 0)
                 begin
