@@ -378,8 +378,8 @@ class gameboyprocessor;
                     carry = computeCarry(this.A); 
                     this.F[7] = 1'b1; // Z  
                 end
-                this.F[5] = !carry[3];
-                this.F[4] = !carry[7];   
+                this.F[5] = carry[3]; // !
+                this.F[4] = carry[7]; // !
             end
         // LOAD
         end else if (instr[7:6] == 2'b01)
