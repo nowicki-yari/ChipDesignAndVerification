@@ -323,6 +323,7 @@ class gameboyprocessor;
                     this.F[7] = 1'b0;
                 end
             end else begin // CP
+                this.F[6] = 1'b1; // set N
                 if(instr[2:0] == 3'b000) // B
                 begin
                     if (this.A == this.B)
