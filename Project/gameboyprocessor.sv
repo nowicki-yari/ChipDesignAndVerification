@@ -567,7 +567,8 @@ class gameboyprocessor;
                 end
             end
         end
-
+            this.F[5] = carry[3];
+            this.F[4] = carry[7];
         return {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L};
 
     endfunction : executeALUInstruction
@@ -579,7 +580,7 @@ class gameboyprocessor;
         for (int i = 1; i <=7; i++) begin
             carry_f[i] = (this.A[i] & (register[i] ^ inv)) | (carry_f[i-1] & (this.A[i] ^ (register[i] ^ inv)));
         end
-        $display("Carry: %x", carry);
+        $display("Carry: %x", carry_f);
         return carry_f;
     endfunction : computeCarry
 
