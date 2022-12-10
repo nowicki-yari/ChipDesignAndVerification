@@ -136,7 +136,7 @@ class gameboyprocessor;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     carry = computeCarry(8'h00, 1'b0); 
-                    this.A = this.A + 8'h00 + carry[3];
+                    this.A = this.A + 8'h00 + carry[7];
                     
                 end else begin // A
                     carry = computeCarry(this.A, 1'b0); 
