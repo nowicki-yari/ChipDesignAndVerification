@@ -30,3 +30,5 @@ add wave sim:/Top/DUT/regE
 add wave sim:/Top/DUT/regF
 add wave sim:/Top/DUT/regH
 add wave sim:/Top/DUT/regL
+
+run 10us;
