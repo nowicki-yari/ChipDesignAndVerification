@@ -16,14 +16,7 @@ class transaction;
     instruction_type == 2'b10;
   }
  */
-  constraint no_sbc {
-    instruction_selection != 3'b011;
-  }
-  /*
-  constraint no_cp {
-    instruction_selection != 3'b111;
-  }
-  */
+  
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
