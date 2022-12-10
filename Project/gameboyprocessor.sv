@@ -93,26 +93,34 @@ class gameboyprocessor;
                  if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
+                    carry = computeCarry(this.B); 
                 end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A + this.C;
+                    carry = computeCarry(this.C); 
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A + this.D;
+                    carry = computeCarry(this.D); 
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A + this.E;
+                    carry = computeCarry(this.E); 
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A + this.H;
+                    carry = computeCarry(this.H); 
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     this.A = this.A + this.L;
+                    carry = computeCarry(this.L); 
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     this.A = this.A + 8'h00;
+                    carry = computeCarry(8'h00); 
                 end else begin // A
                     this.A = this.A + this.A;
+                    carry = computeCarry(this.A); 
                 end
                 if (this.A == 0)
                 begin
@@ -120,8 +128,9 @@ class gameboyprocessor;
                 end else begin
                     this.F[7] = 1'b0;
                 end
+                this.F[5] = carry[3];
+                this.F[4] = carry[7];
                 this.F[6] = 3'b0;
-                // TODO set carries
             end else if ((instr[5:3] == 3'b010)) // SUB
             begin
                 if(instr[2:0] == 3'b000) // B
