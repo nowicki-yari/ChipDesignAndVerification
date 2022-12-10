@@ -188,6 +188,7 @@ class gameboyprocessor;
                 this.F[6:4] = 3'b111;
             end else if (instr[5:3] == 3'b011) // SBC
             begin
+                this.F[4] = !this.F[4];
                 if(instr[2:0] == 3'b000) // B
                 begin
                     carry = computeCarry(this.B, 1'b1);  
@@ -225,8 +226,7 @@ class gameboyprocessor;
                      
                 end else begin // A
                     carry = computeCarry(this.A, 1'b1);  
-                    this.A = this.A - this.A;
-                    
+                    this.A = this.A - this.A; 
                 end
                 if (this.A == 0)
                 begin
