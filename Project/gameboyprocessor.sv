@@ -201,7 +201,7 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     carry = computeCarry(this.B, 1'b1);  
-                    this.A = this.A - (this.B + this.F[4]);
+                    this.A = this.A - (this.B + !this.F[4]);
                     
                 end else if (instr[2:0] == 3'b001) // C
                 begin
