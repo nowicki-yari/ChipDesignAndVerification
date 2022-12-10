@@ -93,34 +93,34 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A + this.B;
-                    carry = computeCarry(this.B); 
+                    carry = computeCarry(this.B, 1'b0); 
                 end else if(instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A + this.C;
-                    carry = computeCarry(this.C); 
+                    carry = computeCarry(this.C, 1'b0); 
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A + this.D;
-                    carry = computeCarry(this.D); 
+                    carry = computeCarry(this.D, 1'b0); 
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A + this.E;
-                    carry = computeCarry(this.E); 
+                    carry = computeCarry(this.E, 1'b0); 
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A + this.H;
-                    carry = computeCarry(this.H); 
+                    carry = computeCarry(this.H, 1'b0); 
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     this.A = this.A + this.L;
-                    carry = computeCarry(this.L); 
+                    carry = computeCarry(this.L, 1'b0); 
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     this.A = this.A + 8'h00;
-                    carry = computeCarry(8'h00); 
+                    carry = computeCarry(8'h00, 1'b0); 
                 end else begin // A
                     this.A = this.A + this.A;
-                    carry = computeCarry(this.A); 
+                    carry = computeCarry(this.A, 1'b0); 
                 end
                 if (this.A == 0)
                 begin
@@ -133,6 +133,7 @@ class gameboyprocessor;
                 this.F[4] = carry[7];
             end else if ((instr[5:3] == 3'b010)) // SUB
             begin
+                this.F[4] = 1'b1;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A - this.B;
@@ -169,58 +170,34 @@ class gameboyprocessor;
                 if(instr[2:0] == 3'b000) // B
                 begin
                     this.A = this.A - this.B;
-                    carry[0] = (this.A[0] & this.B[0]) | (this.F[0] & (this.A[0] ^ this.B[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.B[i]) | (carry[i-1] & (this.A[i] ^ this.B[i]));
-                    end
+                    carry = computeCarry(this.B, 1'b1);  
                 end else if (instr[2:0] == 3'b001) // C
                 begin
                     this.A = this.A - this.C;
-                    carry[0] = (this.A[0] & this.C[0]) | (this.F[0] & (this.A[0] ^ this.C[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.C[i]) | (carry[i-1] & (this.A[i] ^ this.C[i]));
-                    end
+                    carry = computeCarry(this.C, 1'b1);  
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     this.A = this.A - this.D;
-                    carry[0] = (this.A[0] & this.D[0]) | (this.F[0] & (this.A[0] ^ this.D[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.D[i]) | (carry[i-1] & (this.A[i] ^ this.D[i]));
-                    end
+                    carry = computeCarry(this.D, 1'b1);  
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     this.A = this.A - this.E;
-                    carry[0] = (this.A[0] & this.E[0]) | (this.F[0] & (this.A[0] ^ this.E[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.E[i]) | (carry[i-1] & (this.A[i] ^ this.E[i]));
-                    end
+                    carry = computeCarry(this.E, 1'b1);  
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     this.A = this.A - this.H;
-                    carry[0] = (this.A[0] & this.H[0]) | (this.F[0] & (this.H[0] ^ this.H[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.H[i]) | (carry[i-1] & (this.A[i] ^ this.H[i]));
-                    end
+                    carry = computeCarry(this.H, 1'b1);  
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     this.A = this.A - this.L;
-                    carry[0] = (this.A[0] & this.L[0]) | (this.F[0] & (this.A[0] ^ this.L[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.L[i]) | (carry[i-1] & (this.A[i] ^ this.L[i]));
-                    end
+                    carry = computeCarry(this.L, 1'b1);  
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     this.A = this.A - 8'h00;
-                    carry[0] = (this.A[0] & this.A[0]) | (this.F[0] & (this.A[0] ^ this.A[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.A[i]) | (carry[i-1] & (this.A[i] ^ this.A[i]));
-                    end
+                    carry = computeCarry(8'h00, 1'b1);  
                 end else begin // A
                     this.A = this.A - this.A;
-                    carry[0] = (this.A[0] & this.A[0]) | (this.F[0] & (this.A[0] ^ this.A[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.A[i]) | (carry[i-1] & (this.A[i] ^ this.A[i]));
-                    end
+                    carry = computeCarry(this.A, 1'b1);  
                 end
                 if (this.A == 0)
                 begin
@@ -332,6 +309,7 @@ class gameboyprocessor;
                     this.F[7] = 1'b0;
                 end
             end else begin // CP
+                this.F[4] = 1'b1;
                 this.F[6] = 1'b1; // set N
                 this.F[7] = 1'b0; // set Z to zero, only changes if cp is equal
                 if(instr[2:0] == 3'b000) // B
@@ -340,51 +318,51 @@ class gameboyprocessor;
                     begin
                         this.F[7] = 1'b1; // Z
                     end
-                    carry = computeCarry(this.B);           
+                    carry = computeCarry(this.B, 1'b1);           
                 end else if(instr[2:0] == 3'b001) // C
                 begin
                     if (this.A == this.C)
                     begin
                         this.F[7] = 1'b1; // Z
                     end
-                    carry = computeCarry(this.C); 
+                    carry = computeCarry(this.C, 1'b1); 
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     if (this.A == this.D)
                     begin
                         this.F[7] = 1'b1; // Z
                     end 
-                    carry = computeCarry(this.D); 
+                    carry = computeCarry(this.D, 1'b1); 
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     if (this.A == this.E)
                     begin
                         this.F[7] = 1'b1; // Z
                     end 
-                    carry = computeCarry(this.E); 
+                    carry = computeCarry(this.E, 1'b1); 
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
                     end
-                    carry = computeCarry(this.H);
+                    carry = computeCarry(this.H, 1'b1);
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     if (this.A == this.H)
                     begin
                         this.F[7] = 1'b1; // Z
                     end 
-                    carry = computeCarry(this.L); 
+                    carry = computeCarry(this.L, 1'b1); 
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     if (this.A == 8'h00)
                     begin
                         this.F[7] = 1'b1; // Z
                     end
-                    carry = computeCarry(8'h00); 
+                    carry = computeCarry(8'h00, 1'b1); 
                 end else begin // A
-                    carry = computeCarry(this.A); 
+                    carry = computeCarry(this.A, 1'b1); 
                     this.F[7] = 1'b1; // Z  
                 end
                 this.F[5] = !carry[3];
@@ -581,11 +559,12 @@ class gameboyprocessor;
 
     endfunction : executeALUInstruction
 
-    function byte computeCarry(byte register);
+    function byte computeCarry(byte register, bit inv);
         byte carry_f;
-        carry_f[0] = (this.A[0] & register[0]) | (this.F[0] & (this.A[0] ^ register[0]));
+        // For SBC, SUB, CP invert register (B_ii)
+        carry_f[0] = (this.A[0] & (register[0] ^ inv)) | (this.F[4] & (this.A[0] ^ (register[0] ^ inv)));
         for (int i = 1; i <=7; i++) begin
-            carry_f[i] = (this.A[i] & register[i]) | (carry_f[i-1] & (this.A[i] ^ register[i]));
+            carry_f[i] = (this.A[i] & (register[i] ^ inv)) | (carry_f[i-1] & (this.A[i] ^ (register[i] ^ inv)));
         end
         $display("Carry: %x", carry);
         return carry_f;

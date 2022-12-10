@@ -9,7 +9,7 @@ class transaction;
   constraint instruction_starting_with_A {
     (instruction_selection inside {3'h0,3'h1,3'h4});
   }
-  */
+  
 
   // The amount of arithmetic operations should roughly be 3 times the amount of logical operations
   constraint arithmetic_and_logical {
@@ -23,7 +23,7 @@ class transaction;
   constraint no_cp {
     instruction_selection != 3'b111;
   }
-  
+  */
   function new();
     this.instruction_type = 2'h0;
     this.instruction_selection = 3'h0;
