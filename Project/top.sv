@@ -72,7 +72,7 @@ module Top;
     
     
     */
-    // At least 327 logical instructions are done without register A
+    // At least 100 logical instructions are done without register A
     covergroup logical_100@(posedge clock);
         option.at_least = 100;
 
