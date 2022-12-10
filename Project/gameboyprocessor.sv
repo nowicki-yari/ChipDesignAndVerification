@@ -153,38 +153,38 @@ class gameboyprocessor;
                 this.F[4] = carry[7];
             end else if ((instr[5:3] == 3'b010)) // SUB
             begin
-                this.F[4] = 1'b1;
+                this.F[4] = !this.F[4];
                 if(instr[2:0] == 3'b000) // B
                 begin
                     carry = computeCarry(this.B, 1'b1); 
-                    this.A = this.A - this.B - this.F[4];
+                    this.A = this.A - this.B;
                 end else if(instr[2:0] == 3'b001) // C
                 begin
                     carry = computeCarry(this.C, 1'b1); 
-                    this.A = this.A - this.C - this.F[4];
+                    this.A = this.A - this.C;
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     carry = computeCarry(this.D, 1'b1); 
-                    this.A = this.A - this.D - this.F[4];
+                    this.A = this.A - this.D;
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     carry = computeCarry(this.E, 1'b1); 
-                    this.A = this.A - this.E - this.F[4];
+                    this.A = this.A - this.E;
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     carry = computeCarry(this.H, 1'b1); 
-                    this.A = this.A - this.H - this.F[4];
+                    this.A = this.A - this.H;
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     carry = computeCarry(this.L, 1'b1); 
-                    this.A = this.A - this.L - this.F[4];
+                    this.A = this.A - this.L;
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     carry = computeCarry(8'h00, 1'b1); 
-                    this.A = this.A - this.F[4];
+                    this.A = this.A - 8'h00;
                 end else begin // A
-                    carry = computeCarry(this.A, 1'b1); 
-                    this.A = this.A - this.A - this.F[4];
+                carry = computeCarry(this.A, 1'b1); 
+                    this.A = this.A - this.A;
                 end
                 if (this.A == 0)
                 begin
