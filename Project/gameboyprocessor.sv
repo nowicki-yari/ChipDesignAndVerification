@@ -324,6 +324,7 @@ class gameboyprocessor;
                 end
             end else begin // CP
                 this.F[6] = 1'b1; // set N
+                this.F[7] = 1'b0; // set Z to zero, only changes if cp is equal
                 if(instr[2:0] == 3'b000) // B
                 begin
                     if (this.A == this.B)
@@ -332,7 +333,8 @@ class gameboyprocessor;
                     end else if (this.A < this.B)
                     begin
                         this.F[4] = 1'b1; // C
-                    end                   
+                    end
+                    carry = computeCarry(this.B);           
                 end else if(instr[2:0] == 3'b001) // C
                 begin
                     if (this.A == this.C)
@@ -342,6 +344,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
+                    carry = computeCarry(this.C); 
                 end else if(instr[2:0] == 3'b010) // D
                 begin
                     if (this.A == this.D)
@@ -351,6 +354,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
+                    carry = computeCarry(this.D); 
                 end else if(instr[2:0] == 3'b011) // E
                 begin
                     if (this.A == this.E)
@@ -360,6 +364,7 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
+                    carry = computeCarry(this.E); 
                 end else if(instr[2:0] == 3'b100) // H
                 begin
                     if (this.A == this.H)
@@ -368,13 +373,7 @@ class gameboyprocessor;
                     end else begin
                         this.F[7] = 1'b0; // Z
                     end
-                    carry[0] = (this.A[0] & this.H[0]) | (this.H[0] & (this.A[0] ^ this.H[0]));
-                    for (int i = 1; i <=7; i++) begin
-                        carry[i] = (this.A[i] & this.H[i]) | (carry[i-1] & (this.A[i] ^ this.H[i]));
-                    end
-                    this.F[6] = 1'b1;
-                    this.F[5] = !carry[3];
-                    this.F[4] = !carry[7];
+                    carry = computeCarry(this.H);
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
                     if (this.A == this.H)
@@ -384,15 +383,20 @@ class gameboyprocessor;
                     begin
                         this.F[4] = 1'b1; // C
                     end  
+                    carry = computeCarry(this.L); 
                 end else if (instr[2:0] == 3'b110) // HL
                 begin
                     if (this.A == 8'h00)
                     begin
                         this.F[7] = 1'b1; // Z
-                    end 
+                    end
+                    carry = computeCarry(8'h00); 
                 end else begin // A
+                    carry = computeCarry(this.A); 
                     this.F[7] = 1'b1; // Z  
                 end
+                this.F[5] = !carry[3];
+                this.F[4] = !carry[7];   
             end
         // LOAD
         end else if (instr[7:6] == 2'b01)
@@ -581,73 +585,19 @@ class gameboyprocessor;
                 end
             end
         end
-        /*
-        byte prev_value;
-        //Returns the probe
-        if (instr == 8'h8C)
-        begin
-            if (this.F == 8'h30)
-            begin
-                this.A += 1; // OVERFLOW, without increasing reg A one bit the tests fail
-            end
-
-            prev_value = this.A;
-            this.A += this.H;
-            if(this.A == 0)
-            begin
-                this.F = 8'h40;
-            end else if (prev_value[7:4] == 4'hF && this.A[7:4] == 4'h0)
-            begin
-                this.F = 8'h30;
-            end else if (prev_value[4] != this.A[4] || prev_value[5] != this.A[5] || prev_value[6] != this.A[6] || prev_value[7] != this.A[7])
-            begin
-                this.F = 8'h20;
-            end else begin
-                this.F = 8'h00;
-            end
-        end
-        */
         return {this.A, this.B, this.C, this.D, this.E, this.F, this.H, this.L};
 
     endfunction : executeALUInstruction
 
+    function byte computeCarry(byte register);
+        byte carry_f;
+        carry_f[0] = (this.A[0] & register[0]) | (register[0] & (this.A[0] ^ register[0]));
+        for (int i = 1; i <=7; i++) begin
+            carry_f[i] = (this.A[i] & register[i]) | (carry_f[i-1] & (this.A[i] ^ register[i]));
+        end
+        return carry_f
+    endfunction : computeCarry
+
 
 
 endclass : gameboyprocessor
-
-
-/* A small program to test the model */
-program test_cpumodel;
-    static gameboyprocessor gbmodel;
-    longint r;
-    initial 
-    begin
-        /* instantiate model */
-        gbmodel = new();
-
-        /* show the initial values of the register file*/
-        gbmodel.toString();
-
-        /* ADC H => A = A + H + Cin => 0 + 5 + 0 = 5 = 0x5*/ 
-        $display("Executing instruction 0x8C");
-        r = gbmodel.executeALUInstruction(8'h8C);
-
-        /* show the final values of the register file*/
-        gbmodel.toString();
-
-
-        $display("Executing instruction 0x8C");
-        r = gbmodel.executeALUInstruction(8'h8C);
-        gbmodel.toString();
-
-        $display("Executing instruction 0x8C");
-        r = gbmodel.executeALUInstruction(8'h8C);
-        gbmodel.toString();
-
-        $display("Executing instruction 0x8C");
-        r = gbmodel.executeALUInstruction(8'h8C);
-        gbmodel.toString();
-
-    end
-  
-endprogram : test_cpumodel
