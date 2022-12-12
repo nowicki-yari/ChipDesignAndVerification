@@ -602,7 +602,6 @@ class gameboyprocessor;
         for (int i = 1; i <=7; i++) begin
             carry_f[i] = (this.A[i] & (register[i] ^ inv)) | (carry_f[i-1] & (this.A[i] ^ (register[i] ^ inv)));
         end
-        $display("Carry: %x", carry_f);
         return carry_f;
     endfunction : computeCarry
 

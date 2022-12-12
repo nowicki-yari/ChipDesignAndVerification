@@ -44,6 +44,7 @@ module gbprocessor (
     assign load_regC_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & ~instruction[4] & instruction[3];
     assign load_regD_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & instruction[4] & ~instruction[3];
     assign load_regE_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & instruction[4] & instruction[3];
+    // REG F
     assign load_regH_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & ~instruction[4] & ~instruction[3];
     assign load_regL_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & ~instruction[4] & instruction[3];
     assign load_regA_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & instruction[4] & instruction[3];
@@ -52,6 +53,7 @@ module gbprocessor (
     assign load_regC_with_data = (instruction == 8'h0E) ? 1'b1 : 1'b0;
     assign load_regD_with_data = (instruction == 8'h16) ? 1'b1 : 1'b0;
     assign load_regE_with_data = (instruction == 8'h1E) ? 1'b1 : 1'b0;
+    // REG F
     assign load_regH_with_data = (instruction == 8'h26) ? 1'b1 : 1'b0;
     assign load_regL_with_data = (instruction == 8'h2E) ? 1'b1 : 1'b0;
     assign load_regA_with_data = (instruction == 8'h3E) ? 1'b1 : 1'b0;
