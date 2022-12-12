@@ -44,7 +44,7 @@ module gbprocessor (
     assign load_regC_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & ~instruction[4] & instruction[3];
     assign load_regD_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & instruction[4] & ~instruction[3];
     assign load_regE_with_reg  = ~instruction[7] & instruction[6] & ~instruction[5] & instruction[4] & instruction[3];
-    // REG F
+
     assign load_regH_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & ~instruction[4] & ~instruction[3];
     assign load_regL_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & ~instruction[4] & instruction[3];
     assign load_regA_with_reg  = ~instruction[7] & instruction[6] & instruction[5] & instruction[4] & instruction[3];
@@ -120,7 +120,7 @@ module gbprocessor (
                     regC = alu_B;
 
                 if (load_regD_with_data == 1'b1)
-                    regC = data;
+                    regD = data; //changed C with D
                 else if (load_regD_with_reg == 1'b1)
                     regD = alu_B;
 
@@ -132,7 +132,7 @@ module gbprocessor (
                 if (load_regH_with_data == 1'b1)
                     regH = data;
                 else if (load_regH_with_reg == 1'b1)
-                    regL = alu_B;
+                    regH = alu_B; // Changed L to H
                     
                 if (load_regL_with_data == 1'b1)
                     regL = data;
