@@ -17,8 +17,12 @@ class transaction;
   }
  */
 
-  constraint ar_log_or_ld {
-    (instruction_type inside {2'h2, 2'h1});
+  constraint no_halt {
+    instruction_type == 2'b01 -> (instruction_selection != 3'b110 | operand_selection != 3'b110) // NO HALT INSTRUCTION
+  }
+
+  constraint only_01_or_10_as_type {
+    (instruction_type dist {2'b10, 2'b01}) // [4x - Bx]
   }
   
   function new();

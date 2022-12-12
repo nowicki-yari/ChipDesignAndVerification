@@ -39,16 +39,10 @@ module Top;
         }
     
     endgroup
+    */
 
-
-    // At least 1000 CPs are executed
-    covergroup cg_CP_1000 @(posedge clock);
-        option.at_least = 1000;
-        CP_1000: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
-            bins cp_bin = {7};
-        }
-    endgroup
-
+    
+    /*
     // At least 20 SUB instructions should be done with register E
     covergroup cg_SB_20 @(posedge clock);
         option.at_least = 20;
@@ -72,7 +66,16 @@ module Top;
     
     
     */
-    // At least 100 logical instructions are done without register A
+
+    // At least 100 CPs are executed
+    covergroup cg_CP_100 @(posedge clock);
+        option.at_least = 100;
+        CP_1000: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
+            bins cp_bin = {7};
+        }
+    endgroup
+
+    // At least 100 logical instructions are done
     covergroup logical_100@(posedge clock);
         option.at_least = 100;
 
@@ -86,12 +89,12 @@ module Top;
     initial begin
         //cg_XOR_100_after_SBC inst_cg_XOR_100_after_SBC;
         logical_100 inst_logical_100;
-        //cg_CP_1000 inst_cg_CP_1000;
+        cg_CP_100 inst_cg_CP_100;
         //cg_SB_20 inst_cg_SB_20;
         
         //inst_cg_XOR_100_after_SBC = new();
         inst_logical_100 = new();
-        //inst_cg_CP_1000 = new();
+        inst_cg_CP_100 = new();
         //inst_cg_SB_20 = new();
 
     end
