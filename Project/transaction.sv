@@ -18,7 +18,7 @@ class transaction;
  */
 
   constraint no_halt {
-    instruction_type == 2'b01 -> (instruction_selection != 3'b110 | operand_selection != 3'b110) // NO HALT INSTRUCTION
+    instruction_type == 2'b01 -> (instruction_selection != 3'b110 | operand_selection != 3'b110); // NO HALT INSTRUCTION
   }
 
   constraint only_01_or_10_as_type {
