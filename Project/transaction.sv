@@ -22,7 +22,7 @@ class transaction;
   }
 
   constraint only_01_or_10_as_type {
-    (instruction_type inside {2'b10, 2'b01}) // [4x - Bx]
+    (instruction_type inside {2'b10, 2'b01}); // [4x - Bx]
   }
   
   function new();
