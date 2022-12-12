@@ -99,10 +99,11 @@ module Top;
 
     // make an instance of cg1
     initial begin
-        logical_100 inst_logical_100;
+        logical_1000 inst_logical_1000;
         cg_CP_100 inst_cg_CP_100;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
-        inst_logical_100 = new();
+
+        inst_logical_1000 = new();
         inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
 
