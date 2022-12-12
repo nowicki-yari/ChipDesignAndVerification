@@ -17,8 +17,9 @@ class transaction;
   }
  */
 
-  constraint no_halt {
-    instruction_type == 2'b01 -> (instruction_selection != 3'b110 | operand_selection != 3'b110); // NO HALT INSTRUCTION
+  constraint no_halt_or_load0 {
+    instruction_type == 2'b01 -> (instruction_selection != 3'b110 | operand_selection != 3'b110); // NO HALT INSTRUCTION 
+    instruction_type == 2'b01 -> (operand_selection != 3'b110); // NO LOADING 8'H00 --> sets everything to zero eventually
   }
 
   constraint only_01_or_10_as_type {
