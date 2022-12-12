@@ -76,8 +76,8 @@ module Top;
     endgroup
 
     // At least 100 logical instructions are done
-    covergroup logical_100@(posedge clock);
-        option.at_least = 100;
+    covergroup logical_1000@(posedge clock);
+        option.at_least = 1000;
 
         cp_ALU_instruction_type: coverpoint gb_i.instruction[5] iff(gb_i.valid && !gb_i.reset){ 
             bins arithmetic = {0};
@@ -85,17 +85,27 @@ module Top;
         }
     endgroup
 
+    // At least 100 arithmetic or logical instructions after LD
+    covergroup cg_LD_then_AR_or_LOG @(posedge clock);
+        option.at_least = 100;
+        cp_ALU_instruction_type: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
+            bins load = {1};
+            bins log_or_ar = {2};
+
+            bins log_or_ar_follows_load = (1 => 2);
+        }
+
+
+    endgroup
+
+
     // make an instance of cg1
     initial begin
-        //cg_XOR_100_after_SBC inst_cg_XOR_100_after_SBC;
         logical_100 inst_logical_100;
         cg_CP_100 inst_cg_CP_100;
-        //cg_SB_20 inst_cg_SB_20;
         
-        //inst_cg_XOR_100_after_SBC = new();
         inst_logical_100 = new();
         inst_cg_CP_100 = new();
-        //inst_cg_SB_20 = new();
 
     end
 
