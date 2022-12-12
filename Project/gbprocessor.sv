@@ -104,7 +104,7 @@ module gbprocessor (
                 else if (load_regA_with_data == 1'b1)
                     regA = data;
                 else if (load_regA_with_reg == 1'b1)
-                    regA = alu_BB;
+                    regA = alu_B; // Changed alu_BB to alu_B
 
                 if (load_regF == 1'b1)
                     regF = { alu_flags_out, 4'h0 };
