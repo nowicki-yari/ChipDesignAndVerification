@@ -94,8 +94,6 @@ module Top;
 
             bins log_or_ar_follows_load = (1 => 2);
         }
-
-
     endgroup
 
 
@@ -103,9 +101,10 @@ module Top;
     initial begin
         logical_100 inst_logical_100;
         cg_CP_100 inst_cg_CP_100;
-        
+        cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         inst_logical_100 = new();
         inst_cg_CP_100 = new();
+        inst_cg_LD_then_AR_or_LOG = new();
 
     end
 
