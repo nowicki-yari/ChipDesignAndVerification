@@ -179,7 +179,7 @@ module Top;
         }
 
         data_i: coverpoint gb_i.data[7:0] iff(gb_i.valid && !gb_i.reset){ 
-            bins d_i = {0}
+            bins d_i = {0};
         }
 
         cx_ld_with_0: cross instr, oper, data_i {
