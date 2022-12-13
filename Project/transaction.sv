@@ -20,6 +20,7 @@ class transaction;
   // data is empty when it is not used
   constraint data_inst {
     instruction_type == 2'b00 -> (data != 8'h00);
+    instruction_type == 2'b00 -> (operand_selection = 3'b110);
     instruction_type != 2'b00 -> (data == 8'h00);
   } 
 
