@@ -96,9 +96,9 @@ module Top;
         }
     endgroup
 
-    // At least 50 load instruction with each register
+    // At least 100 load instruction with each register
     covergroup cg_load_with_every_register @(posedge clock);
-        option.at_least = 50;
+        option.at_least = 100;
         load_instr: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
             bins ld_i = {1};
         }
@@ -125,17 +125,59 @@ module Top;
         }
     endgroup
 
+    // At least 100 arith and log instructions with each register
+    covergroup cg_arithmetic_or_logic_with_every_register @(posedge clock);
+        option.at_least = 100;
+        instr: coverpoint gb_i.instruction[7:5] iff(gb_i.valid && !gb_i.reset){ 
+            bins ar_i = {4}; //100
+            bins lg_i = {5}; //101
+        }
+
+        regs: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
+            bins B = {0};
+            bins C = {1};
+            bins D = {2};
+            bins E = {3};
+            bins H = {4};
+            bins L = {5};
+            bins A = {7};
+
+        }
+
+        cx_ar: cross load_instr, regs {
+            bins xB = binsof(instr.ar_i) && binsof(regs.B);
+            bins xC = binsof(instr.ar_i) && binsof(regs.C);
+            bins xD = binsof(instr.ar_i) && binsof(regs.D);
+            bins xE = binsof(instr.ar_i) && binsof(regs.E);
+            bins xH = binsof(instr.ar_i) && binsof(regs.H);
+            bins xL = binsof(instr.ar_i) && binsof(regs.L);
+            bins xA = binsof(instr.ar_i) && binsof(regs.A);
+        }
+
+        cx_lg: cross load_instr, regs {
+            bins xB = binsof(instr.lg_i) && binsof(regs.B);
+            bins xC = binsof(instr.lg_i) && binsof(regs.C);
+            bins xD = binsof(instr.lg_i) && binsof(regs.D);
+            bins xE = binsof(instr.lg_i) && binsof(regs.E);
+            bins xH = binsof(instr.lg_i) && binsof(regs.H);
+            bins xL = binsof(instr.lg_i) && binsof(regs.L);
+            bins xA = binsof(instr.lg_i) && binsof(regs.A);
+        }
+    endgroup
+
     // make an instance of cg1
     initial begin
         cg_logical_1000 inst_cg_logical_1000;
         cg_CP_100 inst_cg_CP_100;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         cg_load_with_every_register inst_cg_load_with_every_register;
-
+        cg_arithmetic_or_logic_with_every_register inst_cg_arithmetic_or_logic_with_every_register;
+        
         inst_cg_logical_1000 = new();
         inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
         inst_cg_load_with_every_register = new();
+        inst_cg_arithmetic_or_logic_with_every_register = new();
 
     end
 
