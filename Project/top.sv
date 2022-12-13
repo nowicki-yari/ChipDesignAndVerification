@@ -16,7 +16,7 @@ module Top;
     gbprocessor DUT (
         .reset(gb_i.reset),
         .clock(clock),
-        .instruction(gb_i.instruction),
+        .instructio n(gb_i.instruction),
         .data(gb_i.data),
         .valid(gb_i.valid),
         .probe(gb_i.probe)
@@ -127,7 +127,7 @@ module Top;
 
     // At least 100 arith and log instructions with each register
     covergroup cg_arithmetic_or_logic_with_every_register @(posedge clock);
-        option.at_least = 100;
+        option.at_least = 10;
         instr: coverpoint gb_i.instruction[7:5] iff(gb_i.valid && !gb_i.reset){ 
             bins ar_i = {4}; //100
             bins lg_i = {5}; //101
