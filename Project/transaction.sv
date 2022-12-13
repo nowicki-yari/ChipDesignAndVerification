@@ -55,7 +55,7 @@ class transaction;
 
   function longint getInstructionAndData();
     return {getInstruction(), getData()};
-  endfunction = getInstructionAndData();
+  endfunction = getInstructionAndData;
 
 endclass : transaction
 
