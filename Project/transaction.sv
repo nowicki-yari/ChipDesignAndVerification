@@ -47,7 +47,7 @@ class transaction;
 
   function byte getInstruction();
     return byte'(this.instruction_type * 2**(6) + this.instruction_selection * 2**(3) + this.operand_selection);
-  endfunction : toByte;
+  endfunction : getInstruction;
 
   function byte getData();
     return data;
