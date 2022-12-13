@@ -77,7 +77,7 @@ module Top;
 
     // At least 100 logical instructions are done
     covergroup cg_logical_1000@(posedge clock);
-        option.at_least = 1000;
+        option.at_least = 100;
 
         cp_ALU_instruction_type: coverpoint gb_i.instruction[5] iff(gb_i.valid && !gb_i.reset){ 
             bins arithmetic = {0};
