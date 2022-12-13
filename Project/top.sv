@@ -115,13 +115,13 @@ module Top;
         }
 
         cx: cross load_instr, regs {
-            bins xB = binsof(load_instr.ld_i) && binsof(regs.regB_bin);
-            bins xC = binsof(load_instr.ld_i) && binsof(regs.regC_bin);
-            bins xD = binsof(load_instr.ld_i) && binsof(regs.regD_bin);
-            bins xE = binsof(load_instr.ld_i) && binsof(regs.regE_bin);
-            bins xH = binsof(load_instr.ld_i) && binsof(regs.regH_bin);
-            bins xL = binsof(load_instr.ld_i) && binsof(regs.regL_bin);
-            bins xA = binsof(load_instr.ld_i) && binsof(regs.regA_bin);
+            bins xB = binsof(load_instr.ld_i) && binsof(regs.B);
+            bins xC = binsof(load_instr.ld_i) && binsof(regs.C);
+            bins xD = binsof(load_instr.ld_i) && binsof(regs.D);
+            bins xE = binsof(load_instr.ld_i) && binsof(regs.E);
+            bins xH = binsof(load_instr.ld_i) && binsof(regs.H);
+            bins xL = binsof(load_instr.ld_i) && binsof(regs.L);
+            bins xA = binsof(load_instr.ld_i) && binsof(regs.A);
         }
     endgroup
 
