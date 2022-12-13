@@ -76,7 +76,7 @@ module Top;
     endgroup
 
     // At least 100 logical instructions are done
-    covergroup logical_1000@(posedge clock);
+    covergroup cg_logical_1000@(posedge clock);
         option.at_least = 1000;
 
         cp_ALU_instruction_type: coverpoint gb_i.instruction[5] iff(gb_i.valid && !gb_i.reset){ 
@@ -96,16 +96,46 @@ module Top;
         }
     endgroup
 
+    // At least 50 load instruction with each register
+    covergroup cg_load_with_every_register @(posedge clock);
+        option.at_least = 50;
+        load_instr: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
+            bins ld_i = {1};
+        }
+
+        regs: coverpoint gb_i.instruction[2:0] iff(gb_i.valid && !gb_i.reset){ 
+            bins B = {0};
+            bins C = {1};
+            bins D = {2};
+            bins E = {3};
+            bins H = {4};
+            bins L = {5};
+            bins A = {7};
+
+        }
+
+        cx: cross load_instr, regs {
+            bins xB = binsof(load_instr.ld_i) && binsof(regs.regB_bin);
+            bins xC = binsof(load_instr.ld_i) && binsof(regs.regC_bin);
+            bins xD = binsof(load_instr.ld_i) && binsof(regs.regD_bin);
+            bins xE = binsof(load_instr.ld_i) && binsof(regs.regE_bin);
+            bins xH = binsof(load_instr.ld_i) && binsof(regs.regH_bin);
+            bins xL = binsof(load_instr.ld_i) && binsof(regs.regL_bin);
+            bins xA = binsof(load_instr.ld_i) && binsof(regs.regA_bin);
+        }
+    endgroup
 
     // make an instance of cg1
     initial begin
-        logical_1000 inst_logical_1000;
+        cg_logical_1000 inst_cg_logical_1000;
         cg_CP_100 inst_cg_CP_100;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
+        cg_load_with_every_register inst_cg_load_with_every_register;
 
-        inst_logical_1000 = new();
+        inst_cg_logical_1000 = new();
         inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
+        inst_cg_load_with_every_register = new();
 
     end
 
