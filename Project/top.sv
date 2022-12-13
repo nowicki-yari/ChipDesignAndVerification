@@ -79,15 +79,16 @@ module Top;
     covergroup cg_logical_1000@(posedge clock);
         option.at_least = 1000;
 
-        cp_ALU_instruction_type: coverpoint gb_i.instruction[5] iff(gb_i.valid && !gb_i.reset){ 
-            bins arithmetic = {0};
-            bins logical = {1};
+
+        cp_ALU_instruction_type: coverpoint gb_i.instruction[7:5] iff(gb_i.valid && !gb_i.reset){ 
+            bins arithmetic = {4};
+            bins logical = {5};
         }
     endgroup
 
     // At least 100 arithmetic or logical instructions after LD
     covergroup cg_LD_then_AR_or_LOG @(posedge clock);
-        option.at_least = 100;
+        option.at_least = 1000;
         cp_ALU_instruction_type: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
             bins load = {1};
             bins log_or_ar = {2};
