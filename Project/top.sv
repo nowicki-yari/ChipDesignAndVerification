@@ -16,7 +16,7 @@ module Top;
     gbprocessor DUT (
         .reset(gb_i.reset),
         .clock(clock),
-        .instructio n(gb_i.instruction),
+        .instruction(gb_i.instruction),
         .data(gb_i.data),
         .valid(gb_i.valid),
         .probe(gb_i.probe)
