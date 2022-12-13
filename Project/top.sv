@@ -183,7 +183,7 @@ module Top;
         }
 
         cx_ld_with_0: cross instr, oper, data_i {
-            bins xLD_zero = binsof(instr.ar_i) && binsof(oper.op_i) && binsof(data_i.d_i);
+            bins xLD_zero = binsof(instr.ld_i) && binsof(oper.op_i) && binsof(data_i.d_i);
         }
     endgroup
 
