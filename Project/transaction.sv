@@ -42,7 +42,7 @@ class transaction;
   endfunction : new
 
   function string toString();
-    return $sformatf("Instruction: %02x %02x %02x (%02x) ", this.instruction_type, this.instruction_selection, this.operand_selection, this.toByte);
+    return $sformatf("Instruction: %02x %02x %02x (%02x) ", this.instruction_type, this.instruction_selection, this.operand_selection, this.getInstruction);
   endfunction : toString;
 
   function byte getInstruction();
@@ -54,7 +54,7 @@ class transaction;
   endfunction : getData;
 
   function longint getInstructionAndData();
-    return {getInstruction(), getData()};
+    return {this.getInstruction, this.getData};
   endfunction : getInstructionAndData;
 
 endclass : transaction
