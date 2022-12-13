@@ -18,11 +18,12 @@ class transaction;
   }
  */
   // data is empty when it is not used
+  /*
   constraint data_inst {
     instruction_type == 2'b00 -> (data != 8'h00);
     instruction_type != 2'b00 -> (data == 8'h00);
   }
-
+*/
   constraint data_inst_2 {
     instruction_type == 2'b00 -> (operand_selection == 3'b110);  
   }
@@ -38,6 +39,10 @@ class transaction;
 
   constraint limited_data_instructions {
     instruction_type dist { 2'b00 := 1, [1:2] := 20};
+  }
+
+  constraint data_is_almost_always_not_null {
+    data dist {8'h00 := 1, [1:255] := 20}
   }
   
   function new();
