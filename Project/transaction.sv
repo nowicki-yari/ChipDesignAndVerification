@@ -29,7 +29,11 @@ class transaction;
   }
 
   constraint only_01_or_10_as_type {
-    (instruction_type inside {2'b10, 2'b01}); // [4x - Bx]
+    (instruction_type inside {2'b10, 2'b01, 2'b00}); // [4x - Bx]
+  }
+
+  constraint limited_data_instructions {
+    (instruction_type dist { 2'b00 := 1, [2'b10, 2'b01] := 20})
   }
   
   function new();
