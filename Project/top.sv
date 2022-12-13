@@ -75,9 +75,9 @@ module Top;
         }
     endgroup
 
-    // At least 100 logical instructions are done
+    // At least 1000 logical instructions are done
     covergroup cg_logical_1000@(posedge clock);
-        option.at_least = 100;
+        option.at_least = 1000;
 
         cp_ALU_instruction_type: coverpoint gb_i.instruction[5] iff(gb_i.valid && !gb_i.reset){ 
             bins arithmetic = {0};
@@ -127,7 +127,7 @@ module Top;
 
     // At least 100 arith and log instructions with each register
     covergroup cg_arithmetic_or_logic_with_every_register @(posedge clock);
-        option.at_least = 10;
+        option.at_least = 100;
         instr: coverpoint gb_i.instruction[7:5] iff(gb_i.valid && !gb_i.reset){ 
             bins ar_i = {4}; //100
             bins lg_i = {5}; //101
