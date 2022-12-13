@@ -33,7 +33,7 @@ class transaction;
   }
 
   constraint limited_data_instructions {
-    (instruction_type dist { 2'b00 := 1, [1:2] := 20});
+    instruction_type dist { 2'b00 := 1, [1:2] := 20};
   }
   
   function new();
