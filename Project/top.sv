@@ -144,7 +144,7 @@ module Top;
 
         }
 
-        cx_ar: cross load_instr, regs {
+        cx_ar: cross instr, regs {
             bins xB = binsof(instr.ar_i) && binsof(regs.B);
             bins xC = binsof(instr.ar_i) && binsof(regs.C);
             bins xD = binsof(instr.ar_i) && binsof(regs.D);
@@ -154,7 +154,7 @@ module Top;
             bins xA = binsof(instr.ar_i) && binsof(regs.A);
         }
 
-        cx_lg: cross load_instr, regs {
+        cx_lg: cross instr, regs {
             bins xB = binsof(instr.lg_i) && binsof(regs.B);
             bins xC = binsof(instr.lg_i) && binsof(regs.C);
             bins xD = binsof(instr.lg_i) && binsof(regs.D);
@@ -172,7 +172,7 @@ module Top;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         cg_load_with_every_register inst_cg_load_with_every_register;
         cg_arithmetic_or_logic_with_every_register inst_cg_arithmetic_or_logic_with_every_register;
-        
+
         inst_cg_logical_1000 = new();
         inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
