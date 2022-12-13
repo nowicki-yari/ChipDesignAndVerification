@@ -52,25 +52,25 @@ class gameboyprocessor;
         /******** content should go here ********/
         // Load with data
         if (instr[7:6] == 2'b00 & instr[2:0] == 3'b110) begin
-            if(inst[5:3] == 3'b000) // B
+            if(instr[5:3] == 3'b000) // B
             begin
                 this.B = data;
-            end else if(inst[5:3] == 3'b001) // C
+            end else if(instr[5:3] == 3'b001) // C
             begin
                 this.C = data;
-            end else if(inst[5:3] == 3'b010) // D
+            end else if(instr[5:3] == 3'b010) // D
             begin
                 this.D = data;
-            end else if(inst[5:3] == 3'b011) // E
+            end else if(instr[5:3] == 3'b011) // E
             begin
                 this.E = data;
-            end else if(inst[5:3] == 3'b100) // H
+            end else if(instr[5:3] == 3'b100) // H
             begin
                 this.H = data;
-            end else if(inst[5:3] == 3'b101) // L
+            end else if(instr[5:3] == 3'b101) // L
             begin
                 this.L = data;
-            end else if(inst[5:3] == 3'b111) // A
+            end else if(instr[5:3] == 3'b111) // A
             begin 
                 this.A = data;
             end
