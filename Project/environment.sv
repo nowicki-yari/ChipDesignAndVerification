@@ -7,9 +7,9 @@
 
 class environment;
 
-  mailbox #(byte) gen2drv;
+  mailbox #(shortint) gen2drv;
   mailbox #(longint) mon2chk;
-  mailbox #(byte) gen2chk;
+  mailbox #(shortint) gen2chk;
   mailbox #(bit) chk2scr;
 
   virtual gb_iface ifc;

@@ -11,7 +11,6 @@ class gameboyprocessor;
     byte F;
     byte H;
     byte L;
-
     /* Upon creating an object, the registers
       are initialised. A simplication was done,
       because the LOAD instructions are not 
@@ -49,11 +48,34 @@ class gameboyprocessor;
        can be fed to the model. The model 
        perf|ms the same operation on its 
        internal registers as the DUT. */
-    function longint executeALUInstruction(byte instr);
+    function longint executeALUInstruction(byte instr, byte data);
         /******** content should go here ********/
-        
+        // Load with data
+        if (instr[7:6] == 2'b00 & instr[2:0] == 3'b110) begin
+            if(inst[5:3] == 3'b000) // B
+            begin
+                this.B = data;
+            end else if(inst[5:3] == 3'b001) // C
+            begin
+                this.C = data;
+            end else if(inst[5:3] == 3'b010) // D
+            begin
+                this.D = data;
+            end else if(inst[5:3] == 3'b011) // E
+            begin
+                this.E = data;
+            end else if(inst[5:3] == 3'b100) // H
+            begin
+                this.H = data;
+            end else if(inst[5:3] == 3'b101) // L
+            begin
+                this.L = data;
+            end else if(inst[5:3] == 3'b111) // A
+            begin 
+                this.A = data;
+            end
         // Arithmetic | logic
-        if (instr[7:6] == 2'b10)
+        end else if (instr[7:6] == 2'b10) 
         begin
             if(instr[5:3] == 3'b000) // ADD
             begin

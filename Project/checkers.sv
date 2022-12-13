@@ -5,16 +5,16 @@ class checkers;
     static gameboyprocessor gbmodel;
 
     /* mailboxes */
-    mailbox #(byte) gen2chk; /* 8 bit */
+    mailbox #(shortint) gen2chk; /* 16 bit */
     mailbox #(longint) mon2chk; /* 64 bit */
     mailbox #(bit) chk2scr; /* single bit */
 
-    byte instr;
+    shortint instr;
     longint r_ALU;
     longint result;
 
     /* constructor */
-    function new(mailbox #(byte) g2c, mailbox #(shortint) m2c, mailbox #(bit) c2s);
+    function new(mailbox #(shortint) g2c, mailbox #(longint) m2c, mailbox #(bit) c2s);
         this.gen2chk = g2c;
         this.mon2chk = m2c;
         this.chk2scr = c2s;
@@ -30,7 +30,7 @@ class checkers;
             this.mon2chk.get(result);
             this.gen2chk.get(instr);
             
-            r_ALU = gbmodel.executeALUInstruction(instr);
+            r_ALU = gbmodel.executeALUInstruction(instr[15:8], instr[7:0]);
            
             gbmodel.toString();
             

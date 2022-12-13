@@ -2,18 +2,19 @@
 
 class generator;
 
-  mailbox #(byte) gen2drv;
-  mailbox #(byte) gen2chk;
+  mailbox #(shortint) gen2drv;
+  mailbox #(shortint) gen2chk;
 
-  function new(mailbox #(byte) g2d, mailbox #(byte) g2c);
+  function new(mailbox #(shortint) g2d, mailbox #(shortint) g2c);
     this.gen2drv = g2d;
     this.gen2chk = g2c;
   endfunction : new
 
   task run;
+    
     string s;
     transaction tra;
-    byte instr;
+    shortint instr;
     $timeformat(-9,0," ns" , 10);
 
     s = $sformatf("[%t | GEN] I will start generating for the mailbox", $time);
@@ -26,7 +27,7 @@ class generator;
     forever
     begin
       void'(tra.randomize());
-      instr = tra.toByte();
+      instr = tra.getInstructionAndData();
       this.gen2chk.put(instr);
       this.gen2drv.put(instr);
 

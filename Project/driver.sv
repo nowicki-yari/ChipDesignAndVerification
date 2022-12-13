@@ -3,16 +3,16 @@
 class driver;
 
   virtual gb_iface ifc;
-  mailbox #(byte) gen2drv;
+  mailbox #(shortint) gen2drv;
 
-  function new(virtual gb_iface ifc, mailbox #(byte) g2d);
+  function new(virtual gb_iface ifc, mailbox #(shortint) g2d);
     this.ifc = ifc;
     this.gen2drv = g2d;
   endfunction : new
 
   task run_addition();
     string s;
-    byte tra;
+    shortint tra;
     
     $timeformat(-9,0," ns" , 10);
 
@@ -28,7 +28,8 @@ class driver;
         @(posedge this.ifc.clock);
 
         this.ifc.valid <= 1'b1;
-        this.ifc.instruction <= tra;
+        this.ifc.instruction <= tra[15:8];
+        this.ifc.data <= tra[7:0];
 
         @(posedge this.ifc.clock);
 
