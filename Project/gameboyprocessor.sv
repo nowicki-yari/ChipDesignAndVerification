@@ -407,7 +407,7 @@ class gameboyprocessor;
                     carry = computeCarry(this.H, 1'b1);
                 end else if (instr[2:0] == 3'b101) // L
                 begin 
-                    if (this.A == this.H)
+                    if (this.A == this.L)
                     begin
                         this.F[7] = 1'b1; // Z
                     end 
