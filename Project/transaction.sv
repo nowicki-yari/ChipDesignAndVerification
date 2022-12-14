@@ -38,7 +38,7 @@ class transaction;
   }
 
   constraint limited_data_instructions {
-    instruction_type dist { 0 := 1, [1:2] :/ 5};
+    instruction_type dist { 0 := 1, [1:2] :/ 10};
   }
 
   constraint data_is_almost_always_not_null {
