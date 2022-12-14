@@ -171,7 +171,7 @@ module Top;
     // (a constraint limits this to 10% with a LD data instruction)
     // but we still want to test this.
     covergroup cg_load_with_zero_or_data @(posedge clock);
-        option.at_least = 1;
+        option.at_least = 5;
         instr: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
             bins ld_i = {0}; //00
         }
