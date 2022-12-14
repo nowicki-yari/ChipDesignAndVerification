@@ -94,6 +94,7 @@ module Top;
             bins log_or_ar = {2};
 
             bins log_or_ar_follows_load = (1 => 2);
+            bins load_follows_log_or_ar = (2 => 1);
         }
     endgroup
 
@@ -169,8 +170,8 @@ module Top;
     // We don't want to LD with zero too much as this will set all registers to zero 
     // (a constraint limits this to 10% with a LD data instruction)
     // but we still want to test this.
-    covergroup cg_load_with_zero @(posedge clock);
-        option.at_least = 1;
+    covergroup cg_load_with_zero_or_data @(posedge clock);
+        option.at_least = 10;
         instr: coverpoint gb_i.instruction[7:6] iff(gb_i.valid && !gb_i.reset){ 
             bins ld_i = {0}; //00
         }
@@ -186,9 +187,12 @@ module Top;
         cx_ld_with_0: cross instr, oper, data_i {
             bins xLD_zero = binsof(instr.ld_i) && binsof(oper.op_i) && binsof(data_i.d_i);
         }
+
+        cx_ld_with_data: cross instr, oper, data_i {
+            bins xLD_data = binsof(instr.ld_i) && binsof(oper.op_i) && !binsof(data_i.d_i);
+        }
+
     endgroup
-
-
 
     // make an instance of cg1
     initial begin
@@ -197,14 +201,14 @@ module Top;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         cg_load_with_every_register inst_cg_load_with_every_register;
         cg_arithmetic_or_logic_with_every_register inst_cg_arithmetic_or_logic_with_every_register;
-        cg_load_with_zero inst_cg_load_with_zero; 
+        cg_load_with_zero inst_cg_load_with_zero_or_data; 
 
         inst_cg_logical_1000 = new();
         inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
         inst_cg_load_with_every_register = new();
         inst_cg_arithmetic_or_logic_with_every_register = new();
-        inst_cg_load_with_zero = new();
+        inst_cg_load_with_zero_or_data = new();
 
     end
 
