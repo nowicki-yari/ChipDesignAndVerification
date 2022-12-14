@@ -201,7 +201,7 @@ module Top;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         cg_load_with_every_register inst_cg_load_with_every_register;
         cg_arithmetic_or_logic_with_every_register inst_cg_arithmetic_or_logic_with_every_register;
-        cg_load_with_zero inst_cg_load_with_zero_or_data; 
+        cg_load_with_zero_or_data inst_cg_load_with_zero_or_data; 
 
         inst_cg_logical_1000 = new();
         inst_cg_CP_100 = new();
