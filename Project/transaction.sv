@@ -38,11 +38,11 @@ class transaction;
   }
 
   constraint limited_data_instructions {
-    instruction_type dist { 2'b00 := 1, [1:2] := 15};
+    instruction_type dist { 0 := 1, [1:2] := 10};
   }
 
   constraint data_is_almost_always_not_null {
-    data dist {8'h00 := 1, [1:255] := 10};
+    data dist {8'h00 := 1, [1:255] := 20};
   }
   
   function new();
