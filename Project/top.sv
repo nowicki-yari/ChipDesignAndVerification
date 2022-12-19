@@ -172,7 +172,7 @@ module Top;
             bins op_i = {6}; //110
         }
 
-        data_i: coverpoint gb_i.data[7:0] iff(gb_si.valid && !gb_i.reset){ 
+        data_i: coverpoint gb_i.data[7:0] iff(gb_i.valid && !gb_i.reset){ 
             bins d_i = {0};
         }
 
