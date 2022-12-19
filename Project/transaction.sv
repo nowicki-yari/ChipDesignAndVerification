@@ -25,8 +25,8 @@ class transaction;
   }
 
   constraint data_is_almost_always_not_null {
-    data dist {8'h00 := 1, [1:255] := 1};
-  }
+    data dist {8'h00 := 1, [1:255] := 2};
+  } 
   
   function new();
     this.instruction_type = 2'h0;
