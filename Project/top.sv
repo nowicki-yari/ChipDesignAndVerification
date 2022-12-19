@@ -67,14 +67,6 @@ module Top;
     
     */
 
-    // At least 100 CPs are executed
-    covergroup cg_CP_100 @(posedge clock);
-        option.at_least = 100;
-        CP_1000: coverpoint gb_i.instruction[5:3] iff(gb_i.valid && !gb_i.reset){ 
-            bins cp_bin = {7};
-        }
-    endgroup
-
     // At least 1000 logical instructions are done
     covergroup cg_logical_1000@(posedge clock);
         option.at_least = 1000;
@@ -180,7 +172,7 @@ module Top;
             bins op_i = {6}; //110
         }
 
-        data_i: coverpoint gb_i.data[7:0] iff(gb_i.valid && !gb_i.reset){ 
+        data_i: coverpoint gb_i.data[7:0] iff(gb_si.valid && !gb_i.reset){ 
             bins d_i = {0};
         }
 
@@ -212,7 +204,6 @@ module Top;
     // make an instance of cg1
     initial begin
         cg_logical_1000 inst_cg_logical_1000;
-        cg_CP_100 inst_cg_CP_100;
         cg_LD_then_AR_or_LOG inst_cg_LD_then_AR_or_LOG;
         cg_load_with_every_register inst_cg_load_with_every_register;
         cg_arithmetic_or_logic_with_every_register inst_cg_arithmetic_or_logic_with_every_register;
@@ -220,7 +211,6 @@ module Top;
         cg_load_with_zero inst_cg_load_with_zero; 
 
         inst_cg_logical_1000 = new();
-        inst_cg_CP_100 = new();
         inst_cg_LD_then_AR_or_LOG = new();
         inst_cg_load_with_every_register = new();
         inst_cg_arithmetic_or_logic_with_every_register = new();
